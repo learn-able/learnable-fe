@@ -9,14 +9,8 @@
 
 ## Notes
 
-## RSpec results
+## Test Results
 
 ```
-Paste RSpec results here
-```
-
-## Rubocop results
-
-```
-Paste Rubocop results here
+Paste results here
 ```
