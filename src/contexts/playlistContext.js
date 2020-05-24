@@ -14,7 +14,7 @@ export default class PlaylistProvider extends React.Component {
 
   addPlaylist = () => {
     const playlist =   {
-        id: 3,
+        id: null,
         title: 'Learn Javascript',
         user_id: 1,
         status: 1,
