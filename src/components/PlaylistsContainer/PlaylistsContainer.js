@@ -6,12 +6,15 @@ import Playlist from '../Playlist/Playlist';
 const PlaylistsContainer = () => {
   const userContext = useContext(UserContext);
   const playlistContext = useContext(PlaylistContext);
-
+  const renderedPlaylists = playlistContext.state.playlists.map(playlist => {
+    return <Playlist key={playlist.id} {...playlist}/>
+  })
+  
   return (
     <>
       <div>{userContext.state.user}</div>
       <button onClick={() => userContext.setUser('Chris')}>update user</button>
-      <Playlist text={"I am a prop."}/>
+      {renderedPlaylists}
     </>
   );
 };

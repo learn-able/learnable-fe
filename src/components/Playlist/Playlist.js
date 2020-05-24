@@ -1,7 +1,8 @@
-const Playlist = (props) => {
-  const {text} = props
+const Playlist = ({ status, title }) => {
   return (
-    <div>{text}</div>
+    <section>
+      <h3>{title}</h3>
+    </section>
   )
 }
 
