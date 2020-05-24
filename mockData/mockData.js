@@ -14,4 +14,19 @@ export const mockPlaylistData = [
       },
     ],
   },
+  {
+    id: 2,
+    title: 'Learn Ruby',
+    user_id: 1,
+    status: 1,
+    playlistItems: [
+      {
+        id: 2,
+        title: 'Ruby Crash Course',
+        url: '#',
+        isComplete: false,
+        playlist_id: 2,
+      },
+    ],
+  },
 ];
