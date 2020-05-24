@@ -15,7 +15,6 @@ export default function Home() {
       <Head>
         <title>Learnable</title>
       </Head>
-      <Title>My page</Title>
       <PlaylistProvider>
         <PlaylistsContainer />
       </PlaylistProvider>
