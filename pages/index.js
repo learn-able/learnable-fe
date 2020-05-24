@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import PlaylistProvider from '../src/contexts/playlistContext';
+import PlaylistsContainer from '../src/components/PlaylistsContainer/PlaylistsContainer';
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
@@ -14,6 +16,9 @@ export default function Home() {
         <title>Learnable</title>
       </Head>
       <Title>My page</Title>
+      <PlaylistProvider>
+        <PlaylistsContainer />
+      </PlaylistProvider>
     </>
   );
 }
