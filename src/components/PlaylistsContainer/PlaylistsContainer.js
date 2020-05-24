@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../contexts/userContext';
+import { PlaylistContext } from '../../contexts/playlistContext';
 
 const PlaylistsContainer = () => {
   const userContext = useContext(UserContext);
+  const playlistContext = useContext(PlaylistContext);
 
   return (
     <>

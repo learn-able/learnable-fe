@@ -1,11 +1,16 @@
 import React, { createContext } from 'react';
+import { mockPlaylistData } from '../../mockData/mockData';
 
-export const PlayListContext = createContext();
+export const PlaylistContext = createContext();
 
 export default class PlaylistProvider extends React.Component {
   state = {
     playlists: [],
   };
+
+  componentDidMount() {
+    this.setState({ playlists: mockPlaylistData });
+  }
 
   addPlaylist = () => {};
 
@@ -18,9 +23,9 @@ export default class PlaylistProvider extends React.Component {
     const { setPlaylists } = this.state;
 
     return (
-      <PlayListContext.Provider value={{ state: this.state, setPlaylists }}>
+      <PlaylistContext.Provider value={{ state: this.state, setPlaylists }}>
         {children}
-      </PlayListContext.Provider>
+      </PlaylistContext.Provider>
     );
   }
 }
