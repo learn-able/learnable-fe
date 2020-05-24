@@ -13,6 +13,7 @@ export default class UserProvider extends React.Component {
 
   render() {
     const { children } = this.props;
+
     return (
       <UserContext.Provider
         value={{ state: this.state, setUser: this.setUser }}
