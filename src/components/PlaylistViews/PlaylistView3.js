@@ -1,10 +1,11 @@
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle'
 
 
-const PlaylistView3 = ({ title }) => {
+const PlaylistView3 = ({ title, playlistItems }) => {
   return (
     <>
-      <PlaylistTitle title={title} />
+      <PlaylistTitle title={title} playlistItems={playlistItems} />
+      <div>3</div>
     </>
   )
 }

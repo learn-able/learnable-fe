@@ -27,7 +27,7 @@ const Section = styled(motion.section)`
 `;
 
 const Playlist = (props) => {
-  const {id, title, status} = props;
+  const {id, status} = props;
 
   const isNewPlaylist = (id) => (id ? 4 : 1);
 
@@ -60,7 +60,6 @@ const Playlist = (props) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.99 }}
     >
-      <h3>{title}</h3>
       {switchViews(step)}
       {step > 1 && <button onClick={prevStep}>-</button>}
       {step < 4 && <button onClick={nextStep}>+</button>}
