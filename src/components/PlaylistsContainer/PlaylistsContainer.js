@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
-import { mockPlaylistData } from '../../../mockData/mockData'
 
 const parentVariants = {
   active: {
