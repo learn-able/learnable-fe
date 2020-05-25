@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PlaylistProvider from '../src/contexts/playlistContext';
 import PlaylistsContainer from '../src/components/PlaylistsContainer/PlaylistsContainer';
 
-const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fontFamily.primary};
-  font-size: 50px;
+const MainWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100vw;
 `;
 
 export default function Home() {
@@ -16,7 +16,9 @@ export default function Home() {
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>
-        <PlaylistsContainer />
+        <MainWrapper>
+          <PlaylistsContainer />
+        </MainWrapper>
       </PlaylistProvider>
     </>
   );
