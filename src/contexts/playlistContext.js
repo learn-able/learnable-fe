@@ -12,7 +12,17 @@ export default class PlaylistProvider extends React.Component {
     this.setState({ playlists: mockPlaylistData });
   }
 
-  addPlaylist = () => {};
+  addPlaylist = () => {
+    const playlist =   {
+        id: null,
+        title: "",
+        user_id: 1,
+        status: 1,
+        playlistItems: [],
+      };
+
+    this.setState({playlists: [...this.state.playlists, playlist]});
+  };
 
   setPlaylists = () => {};
 
@@ -23,7 +33,10 @@ export default class PlaylistProvider extends React.Component {
     const { setPlaylists } = this.state;
 
     return (
-      <PlaylistContext.Provider value={{ state: this.state, setPlaylists }}>
+      <PlaylistContext.Provider value={{
+          state: this.state,
+          addPlaylist: this.addPlaylist
+      }}>
         {children}
       </PlaylistContext.Provider>
     );
