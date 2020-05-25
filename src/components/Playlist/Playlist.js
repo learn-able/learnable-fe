@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from 'react';
 import styled from 'styled-components';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
@@ -5,17 +6,28 @@ import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
 import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
-const Section = styled.section`
+const childVariants = {
+  active: {
+    opacity: 1
+  },
+  disabled: {
+    opacity: 0
+  }
+};
+
+const Section = styled(motion.section)`
   border: 1px solid ${({ theme }) => theme.colors.grayDarker};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   display: flex;
   flex-direction: column;
   margin: 0 ${({ theme }) => theme.spacers.xs};
   padding: ${({ theme }) => theme.spacers.xs};
+  transform-origin: center;
   width: 25rem;
 `;
 
 const Playlist = ({ status, title, id }) => {
+
   const isNewPlaylist = (id) => (id ? 4 : 1);
 
   const [step, setStep] = useState(isNewPlaylist(id));
@@ -42,7 +54,11 @@ const Playlist = ({ status, title, id }) => {
   };
 
   return (
-    <Section>
+    <Section
+      variants={childVariants}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.99 }}
+    >
       <h3>{title}</h3>
       {switchViews(step)}
       {step > 1 && <button onClick={prevStep}>-</button>}

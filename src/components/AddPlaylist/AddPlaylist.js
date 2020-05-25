@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import React, { useContext } from 'react';
-import Styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Button = Styled.button`
+const Button = styled(motion.button)`
   border: 1px dashed ${({ theme }) => theme.colors.grayDark};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   font-size: ${({ theme }) => theme.fontSizes.md};
@@ -41,6 +42,10 @@ const AddPlaylist = () => {
         onClick={playlistContext.addPlaylist}
         disabled={isDisabled}
         className="test"
+        initial={{opacity: 0}}
+        animate={{opacity: 1, transition: {delay: 0.6}}}
+        whileHover={!isDisabled && { scale: 1.025 }}
+        whileTap={!isDisabled && { scale: 0.98 }}
       >
         Add Playlist
       </Button>

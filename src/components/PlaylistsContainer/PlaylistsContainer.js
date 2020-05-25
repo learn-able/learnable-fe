@@ -1,10 +1,25 @@
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 
-const Main = styled.main`
+const parentVariants = {
+  active: {
+    transition: {
+      delay: 1,
+      staggerChildren: 0.2
+    },
+  },
+  disabled: {
+    transition: {
+      delay: 1
+    }
+  }
+};
+
+const Main = styled(motion.main)`
   display: flex;
   flex-direction: row;
   flex-grow: 1;
@@ -13,12 +28,17 @@ const Main = styled.main`
 
 const PlaylistsContainer = () => {
   const playlistContext = useContext(PlaylistContext);
-  const renderedPlaylists = playlistContext.state.playlists.map((playlist) => (
-    <Playlist key={playlist.id} {...playlist} />
-  ));
+  const { playlists } = playlistContext.state;
+  const renderedPlaylists = playlists.map((playlist) => {
+    return <Playlist key={playlist.id} {...playlist} />
+  });
 
   return (
-    <Main>
+    <Main
+      variants={parentVariants}
+      initial="disabled"
+      animate={playlists.length ? "active" : "disabled"}
+    >
       {renderedPlaylists}
       <AddPlaylist />
     </Main>
