@@ -26,7 +26,7 @@ const Section = styled(motion.section)`
   width: 25rem;
 `;
 
-const Playlist = ({ status, title, id, animationDelay }) => {
+const Playlist = ({ status, title, id }) => {
 
   const isNewPlaylist = (id) => (id ? 4 : 1);
 
