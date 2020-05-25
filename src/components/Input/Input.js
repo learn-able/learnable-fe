@@ -1,14 +1,51 @@
 import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import AddIcon from '@material-ui/icons/Add';
 import { validate } from '../../utils/validators';
 
-const Button = styled.button.attrs((props) => ({
+const PlusIcon = styled(AddIcon)`
+  && {
+    font-size: 3rem;
+    pointer-events: none;
+  }
+`;
+
+const Button = styled.button.attrs(() => ({
   type: 'button',
-}))``;
+}))`
+  background: ${({ theme }) => theme.colors.grayLight};
+  border: none;
+  height: 3rem;
+  width: 3rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    outline: none;
+
+    & > * {
+      color: ${({ theme }) => theme.colors.white};
+    }
+  }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      && > * {
+        color: ${({ theme }) => theme.colors.gray};
+        cursor: auto;
+      }
+    `}
+`;
 
 const FormControl = styled.div`
+  display: flex;
   margin: ${({ theme }) => theme.spacers.xs} 0;
+  position: relative;
   width: 100%;
 
   & label,
@@ -38,6 +75,9 @@ const FormControl = styled.div`
   & p {
     font-size: ${({ theme }) => theme.fontSizes.xs};
     font-weight: 300;
+    position: absolute;
+    left: 0;
+    top: 3rem;
   }
 
   ${({ isInvalid }) =>
@@ -81,13 +121,13 @@ const inputReducer = (state, action) => {
 
 const Input = ({
   buttonChildren,
-  buttonHandler,
   id,
   errorText,
-  hasSubmitButton,
+  hasButton,
   initialValid,
   initialValue,
   label,
+  onButtonClick,
   onInput,
   placeholder,
   validators,
@@ -117,34 +157,39 @@ const Input = ({
     dispatch({ type: 'TOUCH' });
   };
 
+  const isInvalid = !inputState.isValid && inputState.isTouched;
+
   const element = (
     <input
       aria-label={label}
       id={id}
       onBlur={touchHandler}
       onChange={changeHandler}
-      placeholder={placeholder}
+      placeholder={isInvalid ? null : placeholder}
       type="text"
       value={inputState.value}
     />
   );
 
-  const isInvalid = !inputState.isValid && inputState.isTouched;
-
   return (
     <FormControl isInvalid={isInvalid}>
-      <label htmlFor={id}>{label}</label>
       {element}
       {isInvalid && <p>{errorText}</p>}
-      {hasSubmitButton && (
-        <Button onClick={buttonHandler}>{buttonChildren}</Button>
+      {hasButton && (
+        <Button
+          aria-label="Submit input"
+          disabled={isInvalid || !value}
+          onClick={onButtonClick}
+        >
+          {buttonChildren || <PlusIcon />}
+        </Button>
       )}
     </FormControl>
   );
 };
 
 Input.defaultProps = {
-  hasSubmitButton: false,
+  hasButton: false,
 };
 
 Input.propTypes = {
@@ -153,13 +198,13 @@ Input.propTypes = {
     PropTypes.object,
     PropTypes.element,
   ]),
-  buttonHandler: PropTypes.func,
   errorText: PropTypes.string,
-  hasSubmitButton: PropTypes.bool,
+  hasButton: PropTypes.bool,
   id: PropTypes.string.isRequired,
   initialValid: PropTypes.bool,
   initialValue: PropTypes.string,
   label: PropTypes.string.isRequired,
+  onButtonClick: PropTypes.func,
   onInput: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   validators: PropTypes.func,
