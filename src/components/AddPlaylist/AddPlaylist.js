@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
@@ -14,16 +14,16 @@ const Button = styled(motion.button)`
     cursor: pointer;
   }
 
-${({ disabled }) =>
-  disabled &&
-  css`
-    border: 1px dashed ${({ theme }) => theme.colors.grayLight};
-    color: ${({ theme }) => theme.colors.grayLight};
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      border: 1px dashed ${({ theme }) => theme.colors.grayLight};
+      color: ${({ theme }) => theme.colors.grayLight};
 
-    &:hover {
-      cursor: auto;
-    }
-  `}
+      &:hover {
+        cursor: auto;
+      }
+    `}
 `;
 
 const AddPlaylist = () => {
