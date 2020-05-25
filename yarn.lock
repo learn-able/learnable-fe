@@ -1060,9 +1060,9 @@
     tslib "^1.10.0"
 
 "@testing-library/dom@^7.2.2":
-  version "7.5.7"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.5.7.tgz#c4bf683a65083d4a78644588cfa4ad684c113fc7"
-  integrity sha512-835MiwAxQE7xjSrhpeJbv41UQRmsPJQ0tGfzWiJMdZj2LBbdG5cT8Z44Viv11/XucCmJHr/v8q7VpZnuSimscg==
+  version "7.5.8"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.5.8.tgz#35eb20f1cfd90629a09728954fd916ea142e5de5"
+  integrity sha512-aEK4GDeIk3sHuuF8NNvZrmZg5xfF7llvdlVfjely/fPg/GE4yLa0cVZEBWpS6oVUBk2tEXjwTDPFnMOe/M0GTQ==
   dependencies:
     "@babel/runtime" "^7.9.6"
     aria-query "^4.0.2"
@@ -1849,9 +1849,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001017, caniuse-lite@^1.0.30001043:
-  version "1.0.30001064"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001064.tgz#a0f49689119ba08943b09968e118faf3f645add0"
-  integrity sha512-hdBcQMFvJIrOhkpAZiRXz04Cmetwc9NekeuNl0qZfHOugxOhJKxsjF1RmISMPFjIF4PPx1reliIzbfN42EiQ5A==
+  version "1.0.30001066"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001066.tgz#0a8a58a10108f2b9bf38e7b65c237b12fd9c5f04"
+  integrity sha512-Gfj/WAastBtfxLws0RCh2sDbTK/8rJuSeZMecrSkNGYxPcv7EzblmDGfWQCFEQcSqYE2BRgQiJh8HOD07N5hIw==
 
 chalk@^1.1.3:
   version "1.1.3"
@@ -4934,9 +4934,9 @@ regexpu-core@^4.7.0:
     unicode-match-property-value-ecmascript "^1.2.0"
 
 regjsgen@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/regjsgen/-/regjsgen-0.5.1.tgz#48f0bf1a5ea205196929c0d9798b42d1ed98443c"
-  integrity sha512-5qxzGZjDs9w4tzT3TPhCJqWdCc3RLYwy9J2NB0nm5Lz+S273lvWcpjaTGHsT1dc6Hhfq41uSEOw8wBmxrKOuyg==
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/regjsgen/-/regjsgen-0.5.2.tgz#92ff295fb1deecbf6ecdab2543d207e91aa33733"
+  integrity sha512-OFFT3MfrH90xIW8OOSyUrk6QHD5E9JOTeGodiJeBS3J6IwlgzJMNE/1bZklWz5oTg+9dCMyEetclvCVXOPoN3A==
 
 regjsparser@^0.6.4:
   version "0.6.4"
