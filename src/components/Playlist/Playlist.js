@@ -6,21 +6,6 @@ import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
 import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
-const variants = {
-  start: {
-    opacity: 0,
-    scaleX: 0,
-  },
-  end: {
-    opacity: 1,
-    scaleX: 1,
-  },
-  exit: {
-    opacity: 0,
-    scaleX: 0,
-  },
-};
-
 const Section = styled(motion.section)`
   border: 1px solid ${({ theme }) => theme.colors.grayDarker};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
@@ -61,10 +46,8 @@ const Playlist = ({ status, title, id }) => {
 
   return (
     <Section
-      variants={variants}
-      initial="start"
-      animate="end"
-      exit="exit"
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 1 }}
     >
