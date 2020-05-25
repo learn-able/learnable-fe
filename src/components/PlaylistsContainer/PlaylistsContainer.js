@@ -16,7 +16,7 @@ const PlaylistsContainer = () => {
   const playlistContext = useContext(PlaylistContext);
   const renderedPlaylists = playlistContext.state.playlists.map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
-  )).reverse();
+  ));
 
   return (
     <Main>
