@@ -207,7 +207,7 @@ Input.propTypes = {
   onButtonClick: PropTypes.func,
   onInput: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  validators: PropTypes.func,
+  validators: PropTypes.array,
 };
 
 export default Input;
