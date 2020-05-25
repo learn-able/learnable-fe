@@ -15,18 +15,10 @@ export default class PlaylistProvider extends React.Component {
   addPlaylist = () => {
     const playlist =   {
         id: null,
-        title: 'Learn Javascript',
+        title: "",
         user_id: 1,
         status: 1,
-        playlistItems: [
-          {
-            id: 1,
-            title: 'JavaScript Crash Course',
-            url: '#',
-            isComplete: false,
-            playlist_id: 3,
-          },
-        ],
+        playlistItems: [],
       };
 
     this.setState({playlists: [...this.state.playlists, playlist]});
