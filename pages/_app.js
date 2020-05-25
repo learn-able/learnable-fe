@@ -1,3 +1,5 @@
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 import App from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import UserProvider from '../src/contexts/userContext';
@@ -10,8 +12,10 @@ export default class MyApp extends App {
     return (
       <UserProvider>
         <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Component {...pageProps} />
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </MuiPickersUtilsProvider>
         </ThemeProvider>
       </UserProvider>
     );
