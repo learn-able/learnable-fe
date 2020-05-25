@@ -26,7 +26,8 @@ const Section = styled(motion.section)`
   width: 25rem;
 `;
 
-const Playlist = ({ status, title, id }) => {
+const Playlist = (props) => {
+  const {id, title, status} = props;
 
   const isNewPlaylist = (id) => (id ? 4 : 1);
 
@@ -35,13 +36,13 @@ const Playlist = ({ status, title, id }) => {
   const switchViews = () => {
     switch (step) {
       case 1:
-        return <PlaylistView1 />;
+        return <PlaylistView1 {...props} />;
       case 2:
-        return <PlaylistView2 />;
+        return <PlaylistView2 {...props} />;
       case 3:
-        return <PlaylistView3 />;
+        return <PlaylistView3 {...props} />;
       case 4:
-        return <PlaylistView4 />;
+        return <PlaylistView4 {...props} />;
     }
   };
 
