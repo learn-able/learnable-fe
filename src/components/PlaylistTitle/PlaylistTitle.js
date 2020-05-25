@@ -10,11 +10,10 @@ const calculatePercentComplete = (arr) => {
 }
 
 const Div = styled.div`
-  border: 1px solid black;
   display: flex;
-  justify-content: space-between;
   font-size: ${({ theme }) => theme.fontSizes.md};
   font-weight: 300;
+  justify-content: space-between;
 `
 
 const Span = styled.span`
