@@ -43,7 +43,7 @@ const AddPlaylist = () => {
         disabled={isDisabled}
         className="test"
         initial={{opacity: 0}}
-        animate={{opacity: 1, transition: {delay: 0.25}}}
+        animate={{opacity: 1, transition: {delay: 0.3}}}
         whileHover={!isDisabled && { scale: 1.025 }}
         whileTap={!isDisabled && { scale: 0.98 }}
       >

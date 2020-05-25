@@ -6,6 +6,17 @@ import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
 import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
+const childVariants = {
+  active: {
+    scaleX: 1,
+    opacity: 1
+  },
+  disabled: {
+    scaleX: 0,
+    opacity: 0.7
+  }
+};
+
 const Section = styled(motion.section)`
   border: 1px solid ${({ theme }) => theme.colors.grayDarker};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
@@ -17,7 +28,7 @@ const Section = styled(motion.section)`
   width: 25rem;
 `;
 
-const Playlist = ({ status, title, id }) => {
+const Playlist = ({ status, title, id, animationDelay }) => {
 
   const isNewPlaylist = (id) => (id ? 4 : 1);
 
@@ -46,10 +57,7 @@ const Playlist = ({ status, title, id }) => {
 
   return (
     <Section
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      whileHover={{ scale: 1.01 }}
-      whileTap={{ scale: 1 }}
+      variants={childVariants}
     >
       <h3>{title}</h3>
       {switchViews(step)}
