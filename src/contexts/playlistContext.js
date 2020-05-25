@@ -5,7 +5,7 @@ export const PlaylistContext = createContext();
 
 export default class PlaylistProvider extends React.Component {
   state = {
-    playlists: [],
+    playlists: []
   };
 
   componentDidMount() {

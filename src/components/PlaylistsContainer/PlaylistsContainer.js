@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
+import { mockPlaylistData } from '../../../mockData/mockData'
 
 const parentVariants = {
   active: {
@@ -28,21 +29,18 @@ const Main = styled(motion.main)`
 
 const PlaylistsContainer = () => {
   const playlistContext = useContext(PlaylistContext);
-  const renderedPlaylists = playlistContext.state.playlists.map((playlist) => {
+  const { playlists } = playlistContext.state;
+  const renderedPlaylists = playlists.map((playlist) => {
     return <Playlist key={playlist.id} {...playlist} />
   });
-
-  const mapTest = [0, 1, 2].map(value => (
-    <Playlist />
-  ))
 
   return (
     <Main
       variants={parentVariants}
       initial="disabled"
-      animate="active"
+      animate={playlists.length ? "active" : "disabled"}
     >
-      {mapTest}
+      {renderedPlaylists}
       <AddPlaylist />
     </Main>
   );

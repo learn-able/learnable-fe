@@ -8,12 +8,10 @@ import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
 const childVariants = {
   active: {
-    scaleX: 1,
     opacity: 1
   },
   disabled: {
-    scaleX: 0,
-    opacity: 0.7
+    opacity: 0
   }
 };
 
@@ -58,6 +56,8 @@ const Playlist = ({ status, title, id, animationDelay }) => {
   return (
     <Section
       variants={childVariants}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.99 }}
     >
       <h3>{title}</h3>
       {switchViews(step)}
