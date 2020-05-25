@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 const DatePickerInput = () => {
   const [selectedDate, handleDateChange] = useState(moment().format('MM/DD/YYYY'));
-  const [test, handleTestChange] = useState(1);
 
   const formatDateChange = (date) => {
     handleDateChange(date.format('MM/DD/YYYY'));
