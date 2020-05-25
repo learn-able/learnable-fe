@@ -5,11 +5,7 @@ import PlaylistView3 from '../PlaylistViews/PlaylistView3'
 import PlaylistView4 from '../PlaylistViews/PlaylistView4'
 
 const Playlist = ({ status, title, id }) => {
-  const isNewPlaylist = (id) => {
-    return id
-    ? 4
-    : 1
-  }
+  const isNewPlaylist = (id) => (id ? 4 : 1);
 
   const [step, setStep] = useState(isNewPlaylist(id));
 
