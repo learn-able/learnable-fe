@@ -1,5 +1,12 @@
-const PlaylistView4 = () => {
-  return <div>4</div>
+import PlaylistTitle from '../PlaylistTitle/PlaylistTitle'
+
+const PlaylistView4 = ({ title, playlistItems }) => {
+  return (
+    <>
+      <PlaylistTitle title={title} playlistItems={playlistItems} />
+      <div>4</div>
+    </>
+  )
 }
 
-export default PlaylistView4 
+export default PlaylistView4
