@@ -58,7 +58,6 @@ const Playlist = (props) => {
     <Section
       variants={childVariants}
       whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.99 }}
     >
       {switchViews(step)}
       {step > 1 && <button onClick={prevStep}>-</button>}
