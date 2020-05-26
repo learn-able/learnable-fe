@@ -31,7 +31,8 @@ const Playlist = (props) => {
   const isNewPlaylist = (id) => (id ? 4 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [localTitle, setLocalTitle] = useState(title);
-  const [playlistItem, setPlaylistItem] = useState(null);
+  // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
+  const [playlistItem, setPlaylistItem] = useState('');
 
   const nextStep = () => {
     setStep(step + 1);
@@ -71,11 +72,18 @@ const Playlist = (props) => {
         );
       case 4:
         return (
-          <PlaylistView4 playlistItems={playlistItems} title={localTitle} />
+          <PlaylistView4
+            setPlaylistItem={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={localTitle}
+          />
         );
       default:
     }
   };
+
+  console.log(playlistItem);
 
   return (
     <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
