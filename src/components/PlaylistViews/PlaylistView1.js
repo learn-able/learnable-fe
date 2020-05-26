@@ -1,9 +1,16 @@
-import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer'
+import Input from '../Input/Input';
 
-const PlaylistView1 = ({ playlistItems }) => {
-  return (
-    <PlaylistItemContainer playlistItems={playlistItems} />
-  )
-}
+const PlaylistView1 = ({ nextStep, onChangeHandler, value }) => (
+  <Input
+    id="title"
+    hasButton
+    label="Title"
+    onButtonClick={() => nextStep()}
+    onChangeHandler={(e) => onChangeHandler(e.target.value)}
+    placeholder="first, name your list:"
+    type="text"
+    value={value}
+  />
+);
 
-export default PlaylistView1
+export default PlaylistView1;
