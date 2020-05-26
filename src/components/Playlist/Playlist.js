@@ -59,14 +59,6 @@ const Playlist = (props) => {
         );
       case 2:
         return (
-          <PlaylistView2
-            nextStep={nextStep}
-            onChangeHandler={setLocalTitle}
-            title={localTitle}
-          />
-        );
-      case 3:
-        return (
           <PlaylistView3
             nextStep={nextStep}
             setPlaylistItem={setPlaylistItem}
@@ -75,7 +67,7 @@ const Playlist = (props) => {
             title={localTitle}
           />
         );
-      case 4:
+      case 3:
         return (
           <PlaylistView4
             nextStep={nextStep}
