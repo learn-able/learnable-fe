@@ -35,6 +35,11 @@ const Playlist = (props) => {
   const [playlistItem, setPlaylistItem] = useState('');
 
   const nextStep = () => {
+    if (step > 4) {
+      setStep(4);
+      return;
+    }
+
     setStep(step + 1);
   };
 
@@ -73,6 +78,7 @@ const Playlist = (props) => {
       case 4:
         return (
           <PlaylistView4
+            nextStep={nextStep}
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
@@ -80,6 +86,14 @@ const Playlist = (props) => {
           />
         );
       default:
+        return (
+          <PlaylistView4
+            setPlaylistItem={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={localTitle}
+          />
+        );
     }
   };
 

@@ -57,6 +57,7 @@ const NewPlaylistItemBar = ({
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
   const onItemSubmit = () => {
+    // TODO next step should only happen in step 3
     nextStep();
     toggleInputActive(false);
   };

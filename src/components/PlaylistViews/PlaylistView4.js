@@ -3,6 +3,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer';
 
 const PlaylistView4 = ({
+  nextStep,
   playlistItem,
   playlistItems,
   setPlaylistItem,
@@ -12,6 +13,7 @@ const PlaylistView4 = ({
     <PlaylistTitle title={title} playlistItems={playlistItems} />
     <ProgressBar playlistItems={playlistItems} />
     <PlaylistItemContainer
+      nextStep={nextStep}
       playlistItem={playlistItem}
       playlistItems={playlistItems}
       setPlaylistItem={setPlaylistItem}
