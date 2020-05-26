@@ -31,6 +31,7 @@ const Playlist = (props) => {
   const isNewPlaylist = (id) => (id ? 4 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [localTitle, setLocalTitle] = useState(title);
+  const [playlistItem, setPlaylistItem] = useState(null);
 
   const nextStep = () => {
     setStep(step + 1);
@@ -60,10 +61,18 @@ const Playlist = (props) => {
         );
       case 3:
         return (
-          <PlaylistView3 title={localTitle} playlistItems={playlistItems} />
+          <PlaylistView3
+            nextStep={nextStep}
+            onChangeHandler={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={localTitle}
+          />
         );
       case 4:
-        return <PlaylistView4 {...props} />;
+        return (
+          <PlaylistView4 playlistItems={playlistItems} title={localTitle} />
+        );
       default:
     }
   };

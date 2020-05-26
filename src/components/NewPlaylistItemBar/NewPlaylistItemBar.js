@@ -1,7 +1,15 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Input from '../Input/Input';
 
 const Article = styled.article`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Div = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -41,14 +49,42 @@ const Span = styled.span`
   font-style: italic;
 `;
 
-const NewPlaylistItemBar = ({ playlistItems }) => (
-  <Article>
-    <PlaylistItemCount>{playlistItems.length}</PlaylistItemCount>
-    <Button>
-      + <Span>new item</Span>
-    </Button>
-  </Article>
-);
+const NewPlaylistItemBar = ({
+  nextStep,
+  playlistItem,
+  playlistItems,
+  onChangeHandler,
+}) => {
+  const [inputActive, toggleInputActive] = useState(false);
+  const onItemSubmit = () => {
+    nextStep();
+    toggleInputActive(false);
+  };
+
+  return (
+    <Article>
+      <Div>
+        <PlaylistItemCount>{playlistItems.length}</PlaylistItemCount>
+        <Button onClick={() => toggleInputActive(!inputActive)}>
+          + <Span>new item</Span>
+        </Button>
+      </Div>
+
+      {inputActive && (
+        <Input
+          id="item"
+          hasButton
+          label="Item"
+          onButtonClick={() => onItemSubmit()}
+          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          placeholder="now, add an item URL:"
+          type="text"
+          value={playlistItem}
+        />
+      )}
+    </Article>
+  );
+};
 
 NewPlaylistItemBar.propTypes = {
   playlistItems: PropTypes.arrayOf(PropTypes.object),

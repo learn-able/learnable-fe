@@ -6,14 +6,24 @@ const Div = styled.div`
   flex-grow: 1;
 `;
 
-const PlaylistItemContainer = ({ playlistItems }) => {
+const PlaylistItemContainer = ({
+  nextStep,
+  playlistItem,
+  onChangeHandler,
+  playlistItems,
+}) => {
   const items = playlistItems.map((item) => (
     <PlaylistItem key={item.id} {...item} />
   ));
 
   return (
     <Div>
-      <NewPlaylistItemBar playlistItems={playlistItems} />
+      <NewPlaylistItemBar
+        nextStep={nextStep}
+        onChangeHandler={onChangeHandler}
+        playlistItem={playlistItem}
+        playlistItems={playlistItems}
+      />
       {items}
     </Div>
   );
