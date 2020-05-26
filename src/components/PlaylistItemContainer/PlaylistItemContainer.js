@@ -9,8 +9,8 @@ const Div = styled.div`
 const PlaylistItemContainer = ({
   nextStep,
   playlistItem,
-  onChangeHandler,
   playlistItems,
+  setPlaylistItem,
 }) => {
   const items = playlistItems.map((item) => (
     <PlaylistItem key={item.id} {...item} />
@@ -20,7 +20,7 @@ const PlaylistItemContainer = ({
     <Div>
       <NewPlaylistItemBar
         nextStep={nextStep}
-        onChangeHandler={onChangeHandler}
+        setPlaylistItem={setPlaylistItem}
         playlistItem={playlistItem}
         playlistItems={playlistItems}
       />

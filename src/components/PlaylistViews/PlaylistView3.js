@@ -4,9 +4,9 @@ import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContaine
 
 const PlaylistView3 = ({
   nextStep,
-  onChangeHandler,
   playlistItem,
   playlistItems,
+  setPlaylistItem,
   title,
 }) => (
   <>
@@ -14,9 +14,9 @@ const PlaylistView3 = ({
     <ProgressBar playlistItems={playlistItems} />
     <PlaylistItemContainer
       nextStep={nextStep}
-      onChangeHandler={onChangeHandler}
       playlistItem={playlistItem}
       playlistItems={playlistItems}
+      setPlaylistItem={setPlaylistItem}
     />
   </>
 );

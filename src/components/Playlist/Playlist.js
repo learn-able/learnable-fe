@@ -63,7 +63,7 @@ const Playlist = (props) => {
         return (
           <PlaylistView3
             nextStep={nextStep}
-            onChangeHandler={setPlaylistItem}
+            setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
             title={localTitle}

@@ -53,7 +53,7 @@ const NewPlaylistItemBar = ({
   nextStep,
   playlistItem,
   playlistItems,
-  onChangeHandler,
+  setPlaylistItem,
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
   const onItemSubmit = () => {
@@ -76,7 +76,7 @@ const NewPlaylistItemBar = ({
           hasButton
           label="Item"
           onButtonClick={() => onItemSubmit()}
-          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          onChangeHandler={(e) => setPlaylistItem(e.target.value)}
           placeholder="now, add an item URL:"
           type="text"
           value={playlistItem}
