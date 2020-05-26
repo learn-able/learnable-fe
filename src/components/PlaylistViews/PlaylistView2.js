@@ -1,15 +1,28 @@
-import PlaylistTitle from '../PlaylistTitle/PlaylistTitle'
-import DatePickerInput from '../DatePickerInput/DatePickerInput'
-import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer'
+import styled from 'styled-components';
+import Input from '../Input/Input';
+import DatePickerInput from '../DatePickerInput/DatePickerInput';
 
-const PlaylistView2 = ({ title, playlistItems }) => {
-  return (
-    <>
-      <PlaylistTitle title={title} playlistItems={playlistItems} />
-      <DatePickerInput />
-      <PlaylistItemContainer playlistItems={playlistItems} />
-    </>
-  )
-}
+const Button = styled.button.attrs(() => ({
+  type: 'button',
+}))`
+  background: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.white};
+  width: 100%;
+`;
 
-export default PlaylistView2
+const PlaylistView2 = ({ nextStep, onChangeHandler, value }) => (
+  <>
+    <Input
+      id="playlist-title"
+      label="Title"
+      onChangeHandler={(e) => onChangeHandler(e.target.value)}
+      placeholder="first, name your list:"
+      type="text"
+      value={value}
+    />
+    <DatePickerInput />
+    <Button onClick={() => nextStep()}>SAVE</Button>
+  </>
+);
+
+export default PlaylistView2;
