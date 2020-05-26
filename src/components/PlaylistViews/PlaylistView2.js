@@ -10,7 +10,7 @@ const Button = styled.button.attrs(() => ({
   width: 100%;
 `;
 
-const PlaylistView2 = ({ nextStep, onChangeHandler, value }) => (
+const PlaylistView2 = ({ nextStep, onChangeHandler, title }) => (
   <>
     <Input
       id="playlist-title"
@@ -18,7 +18,7 @@ const PlaylistView2 = ({ nextStep, onChangeHandler, value }) => (
       onChangeHandler={(e) => onChangeHandler(e.target.value)}
       placeholder="first, name your list:"
       type="text"
-      value={value}
+      value={title}
     />
     <DatePickerInput />
     <Button onClick={() => nextStep()}>SAVE</Button>

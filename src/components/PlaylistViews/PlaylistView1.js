@@ -1,6 +1,6 @@
 import Input from '../Input/Input';
 
-const PlaylistView1 = ({ nextStep, onChangeHandler, value }) => (
+const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => (
   <Input
     id="title"
     hasButton
@@ -9,7 +9,7 @@ const PlaylistView1 = ({ nextStep, onChangeHandler, value }) => (
     onChangeHandler={(e) => onChangeHandler(e.target.value)}
     placeholder="first, name your list:"
     type="text"
-    value={value}
+    value={title}
   />
 );
 

@@ -27,10 +27,10 @@ const Section = styled(motion.section)`
 `;
 
 const Playlist = (props) => {
-  const { id, status } = props;
+  const { id, playlistItems, status, title } = props;
   const isNewPlaylist = (id) => (id ? 4 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
-  const [title, setTitle] = useState('');
+  const [localTitle, setLocalTitle] = useState(title);
 
   const nextStep = () => {
     setStep(step + 1);
@@ -46,29 +46,27 @@ const Playlist = (props) => {
         return (
           <PlaylistView1
             nextStep={nextStep}
-            onChangeHandler={setTitle}
-            value={title}
-            {...props}
+            onChangeHandler={setLocalTitle}
+            title={localTitle}
           />
         );
       case 2:
         return (
           <PlaylistView2
             nextStep={nextStep}
-            onChangeHandler={setTitle}
-            value={title}
-            {...props}
+            onChangeHandler={setLocalTitle}
+            title={localTitle}
           />
         );
       case 3:
-        return <PlaylistView3 {...props} />;
+        return (
+          <PlaylistView3 title={localTitle} playlistItems={playlistItems} />
+        );
       case 4:
         return <PlaylistView4 {...props} />;
       default:
     }
   };
-
-  console.log(title);
 
   return (
     <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
