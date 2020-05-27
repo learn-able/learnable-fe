@@ -29,15 +29,16 @@ const Section = styled(motion.section)`
 `;
 
 const Playlist = (props) => {
-  const { id, playlistItems, status, title } = props;
+  const { id, due_date, playlistItems, status, title } = props;
   const isNewPlaylist = (id) => (id ? 3 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
-  // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
+  // TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
   const [playlistItem, setPlaylistItem] = useState('');
   const [playlistDate, setPlaylistDate] = useState(
-    moment().format('MM/DD/YYYY')
+    due_date || moment().format('MM/DD/YYYY')
   );
+  console.log(id, 'hello', playlistDate);
 
   const nextStep = () => {
     if (step > 3) {
