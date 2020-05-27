@@ -22,6 +22,7 @@ const Section = styled(motion.section)`
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 0 ${({ theme }) => theme.spacers.xs};
   min-height: 25rem;
   height: 80%;

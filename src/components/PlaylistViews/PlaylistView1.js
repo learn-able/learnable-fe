@@ -7,12 +7,17 @@ import Input from '../Input/Input';
 const Button = styled.button.attrs(() => ({
   type: 'button',
 }))`
-  background: ${({ theme }) => theme.colors.primary};
+  background: #3498db;
+  cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: 500;
   height: 2.5rem;
   width: 100%;
+
+  &:hover {
+    background: #2980b9;
+  }
 `;
 
 const ButtonWrapper = styled.div`
