@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
@@ -7,13 +8,14 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Div = styled.div`
+const Div = styled(motion.div)`
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.grayDarker};
+  border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   display: flex;
   margin: 0.5rem 0;
   min-height: ${({ theme }) => theme.spacers.md};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
+  box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
 `;
 
 const P = styled.p`
@@ -47,7 +49,7 @@ const PlaylistItem = ({
   };
 
   return (
-    <Div>
+    <Div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
       <Checkbox
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
