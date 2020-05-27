@@ -27,7 +27,12 @@ const Div = styled.div`
   flex-grow: 1;
 `;
 
-const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => {
+const PlaylistView1 = ({
+  onChangeHandler,
+  playlistDate,
+  setPlaylistDate,
+  title,
+}) => {
   const playlistContext = useContext(PlaylistContext);
   const [step, setStep] = useState(1);
 
@@ -37,6 +42,7 @@ const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => {
       title: 'Learn TypeScript',
       user_id: 1,
       status: 1,
+      due_date: '',
       playlistItems: [],
     };
 
@@ -68,7 +74,12 @@ const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => {
           value={title}
         />
       )}
-      {step === 2 && <DatePickerInput />}
+      {step === 2 && (
+        <DatePickerInput
+          playlistDate={playlistDate}
+          setPlaylistDate={setPlaylistDate}
+        />
+      )}
       {step === 2 && (
         <ButtonWrapper>
           <Button onClick={() => mockPost()}>CREATE PLAYLIST</Button>

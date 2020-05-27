@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
@@ -34,6 +35,11 @@ const Playlist = (props) => {
   const [playlistTitle, setPlaylistTitle] = useState(title);
   // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
   const [playlistItem, setPlaylistItem] = useState('');
+  const [playlistDate, setPlaylistDate] = useState(
+    moment().format('MM/DD/YYYY')
+  );
+
+  console.log(playlistDate);
 
   const nextStep = () => {
     if (step > 3) {
@@ -53,8 +59,9 @@ const Playlist = (props) => {
       case 1:
         return (
           <PlaylistView1
-            nextStep={nextStep}
             onChangeHandler={setPlaylistTitle}
+            playlistDate={playlistDate}
+            setPlaylistDate={setPlaylistDate}
             title={playlistTitle}
           />
         );

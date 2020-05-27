@@ -43,8 +43,9 @@ const AddPlaylist = () => {
           playlistContext.addPlaylist({
             id: null,
             title: '',
-            user_id: 999,
+            user_id: 1,
             status: 1,
+            due_date: '',
             playlistItems: [],
           })
         }
