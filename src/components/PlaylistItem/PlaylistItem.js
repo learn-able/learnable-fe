@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -7,7 +8,7 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Div = styled.div`
+const Div = styled(motion.div)`
   align-items: center;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   display: flex;
@@ -53,7 +54,7 @@ const PlaylistItem = ({
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
         name="checkbox"
-        color="black"
+        color="default"
       />
       <P>{name}</P>
       {icon[category]}

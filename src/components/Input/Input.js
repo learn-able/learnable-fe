@@ -21,7 +21,9 @@ const Input = ({
   placeholder,
   value,
 }) => (
-  <FormControl variants={childVariants}>
+  <FormControl
+    variants={childVariants}
+  >
     <input
       aria-label={label}
       id={id || null}
