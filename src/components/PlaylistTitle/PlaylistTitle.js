@@ -13,7 +13,8 @@ const Div = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.md};
   font-weight: 300;
   justify-content: space-between;
-  margin: ${({ theme }) => theme.spacers.sm} 0;
+  margin-bottom: ${({ theme }) => theme.spacers.xs};
+  margin-top: ${({ theme }) => theme.spacers.sm};
 `;
 
 const Span = styled.span`

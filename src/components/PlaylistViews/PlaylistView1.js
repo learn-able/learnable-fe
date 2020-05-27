@@ -42,7 +42,7 @@ const PlaylistView1 = ({
       title: 'Learn TypeScript',
       user_id: 1,
       status: 1,
-      due_date: '',
+      due_date: playlistDate,
       playlistItems: [],
     };
 

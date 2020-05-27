@@ -14,7 +14,6 @@ const DatePickerInput = ({ playlistDate, setPlaylistDate }) => {
       format="MM/DD/YYYY"
       margin="normal"
       id="date-picker-inline"
-      inputValue={playlistDate}
       value={playlistDate}
       onChange={formatDateChange}
       KeyboardButtonProps={{
