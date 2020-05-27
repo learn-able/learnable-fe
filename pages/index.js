@@ -1,3 +1,4 @@
+import AppNav from '../src/components/AppNav/AppNav'
 import Header from '../src/components/Header/Header'
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -6,6 +7,7 @@ import PlaylistsContainer from '../src/components/PlaylistsContainer/PlaylistsCo
 
 const MainWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
 `;
@@ -18,6 +20,7 @@ export default function Home() {
       </Head>
       <PlaylistProvider>
         <MainWrapper>
+          <AppNav />
           <PlaylistsContainer />
         </MainWrapper>
       </PlaylistProvider>
