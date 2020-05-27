@@ -1,8 +1,10 @@
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer';
+import DueDate from '../DueDate/DueDate';
 
 const PlaylistView3 = ({
+  dueDate,
   nextStep,
   playlistItem,
   playlistItems,
@@ -10,8 +12,9 @@ const PlaylistView3 = ({
   title,
 }) => (
   <>
-    2 
+    2
     <PlaylistTitle title={title} playlistItems={playlistItems} />
+    <DueDate dueDate={dueDate} />
     <ProgressBar playlistItems={playlistItems} />
     <PlaylistItemContainer
       nextStep={nextStep}

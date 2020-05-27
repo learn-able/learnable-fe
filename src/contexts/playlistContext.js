@@ -30,7 +30,6 @@ export default class PlaylistProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { setPlaylists } = this.state;
 
     return (
       <PlaylistContext.Provider

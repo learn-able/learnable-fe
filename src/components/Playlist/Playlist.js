@@ -39,8 +39,6 @@ const Playlist = (props) => {
     moment().format('MM/DD/YYYY')
   );
 
-  console.log(playlistDate);
-
   const nextStep = () => {
     if (step > 3) {
       setStep(3);
@@ -68,6 +66,7 @@ const Playlist = (props) => {
       case 2:
         return (
           <PlaylistView2
+            dueDate={playlistDate}
             nextStep={nextStep}
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
