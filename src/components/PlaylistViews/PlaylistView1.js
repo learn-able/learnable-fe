@@ -48,7 +48,6 @@ const PlaylistView1 = ({
 
   return (
     <Div>
-      1
       {step === 1 && (
         <Input
           id="title"

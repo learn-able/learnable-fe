@@ -66,7 +66,6 @@ const PlaylistView3 = ({
   title,
 }) => (
   <>
-    3
     <PlaylistItem category={category} name={playlistItemTitle} />
     <Input
       label="Playlist item title"

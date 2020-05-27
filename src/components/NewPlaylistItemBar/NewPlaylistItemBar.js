@@ -28,7 +28,7 @@ const Button = styled.button.attrs(() => {
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.fontPrimary};
   }
 `;
 
@@ -36,7 +36,7 @@ const PlaylistItemCount = styled.span`
   background-color: ${({ theme }) => theme.colors.grayLight};
   border-radius: 2rem;
   -moz-border-radius: 2rem;
-  color: ${({ theme }) => theme.colors.garyDarker};
+  color: ${({ theme }) => theme.colors.fontPrimary};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   height: 2rem;
@@ -47,6 +47,7 @@ const PlaylistItemCount = styled.span`
 
 const Span = styled.span`
   font-style: italic;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 const NewPlaylistItemBar = ({

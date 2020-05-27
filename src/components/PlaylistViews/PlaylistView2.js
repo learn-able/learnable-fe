@@ -27,7 +27,6 @@ const PlaylistView2 = ({
 
   return (
     <>
-      2
       <PlaylistTitle title={title} playlistItems={playlistItems} />
       <DueDate dueDate={dueDate} />
       <ProgressBar playlistItems={playlistItems} />
