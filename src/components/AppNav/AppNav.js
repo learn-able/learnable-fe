@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components'
 import AddIcon from '@material-ui/icons/Add'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import ArchiveIcon from '@material-ui/icons/Archive';
 
 const Nav = styled.nav`
   display: flex;
@@ -19,12 +19,13 @@ const Button = styled(motion.button)`
   height: 3.5rem;
   margin: 0 1rem;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `
 
 const buttons = [
   {label: <AddIcon fontSize="large" />},
   {label: <NotificationsIcon fontSize="large" />},
-  {label: <HelpOutlineIcon fontSize="large" />},
+  {label: <ArchiveIcon fontSize="large" />},
 ]
 
 const AppNav = () => {

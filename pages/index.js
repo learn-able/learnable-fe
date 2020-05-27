@@ -8,7 +8,7 @@ import PlaylistsContainer from '../src/components/PlaylistsContainer/PlaylistsCo
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   width: 100vw;
 `;
 
@@ -19,6 +19,7 @@ export default function Home() {
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>
+      <Header />
         <MainWrapper>
           <AppNav />
           <PlaylistsContainer />
