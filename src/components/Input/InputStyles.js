@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -32,10 +33,11 @@ export const Button = styled.button.attrs(() => ({
     `}
 `;
 
-export const FormControl = styled.div`
+export const FormControl = styled(motion.div)`
   display: flex;
   margin: ${({ theme }) => theme.spacers.xs} 0;
   position: relative;
+  transform-origin: top;
   width: 100%;
 
   & label,

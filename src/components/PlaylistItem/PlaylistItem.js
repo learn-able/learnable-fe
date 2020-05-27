@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
@@ -8,7 +7,7 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Div = styled(motion.div)`
+const Div = styled.div`
   align-items: center;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   display: flex;

@@ -1,9 +1,24 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Input from '../Input/Input';
 
-const Article = styled.article`
+const parentVariants = {
+  active: {
+    transition: {
+      delay: 1,
+      staggerChildren: 0.2,
+    },
+  },
+  disabled: {
+    transition: {
+      delay: 1,
+    },
+  },
+};
+
+const Article = styled(motion.article)`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -65,7 +80,10 @@ const NewPlaylistItemBar = ({
   };
 
   return (
-    <Article>
+    <Article
+      initial="disabled"
+      animate={inputActive ? 'active' : 'disabled'}
+    >
       <Div>
         <PlaylistItemCount>{playlistItems.length}</PlaylistItemCount>
         <Button onClick={() => toggleInputActive(!inputActive)}>
