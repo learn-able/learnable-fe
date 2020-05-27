@@ -22,7 +22,7 @@ const P = styled.p`
   flex-grow: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-width: 70%;
+  max-width: 75%;
 `;
 
 const icon = {

@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 const calculatePercentComplete = (arr) => {
   if (arr.length) {
-    const completedItems = arr.filter((item) => item.isComplete === true);
-    return (completedItems / arr.length).toFixed();
+    const completedItems = arr.filter(item => item.is_complete === true);
+    return (completedItems.length / arr.length * 100).toFixed();
+  } else {
+    return 0;
   }
-  return 0;
-};
+}
 
 const Div = styled.div`
   display: flex;
