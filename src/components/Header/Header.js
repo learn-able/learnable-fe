@@ -38,6 +38,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3.5rem;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 const Header = () => {
