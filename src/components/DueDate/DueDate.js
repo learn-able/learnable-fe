@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const P = styled.p`
   color: ${({ theme }) => theme.colors.gray};
@@ -8,10 +9,10 @@ const P = styled.p`
   text-align: right;
 `;
 
-const DueDate = ({ dueDate }) => (
-  <div>
-    <P>Due: {dueDate}</P>
-  </div>
-);
+const DueDate = ({ dueDate }) => <P>Due: {dueDate}</P>;
+
+DueDate.propTypes = {
+  dueDate: PropTypes.string.isRequired,
+};
 
 export default DueDate;
