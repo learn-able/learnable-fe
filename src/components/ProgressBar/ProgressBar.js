@@ -17,7 +17,7 @@ const Bar = styled.div`
 
 const PercentComplete = styled.div`
   height: 1rem;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: #2ecc71;
   ${({ percentage }) =>
     css`
       width: ${percentage}

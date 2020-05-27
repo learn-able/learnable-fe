@@ -26,10 +26,10 @@ const P = styled.p`
 `;
 
 const icon = {
-  video: <YouTubeIcon fontSize="large" />,
-  audio: <MicNoneOutlinedIcon fontSize="large" />,
-  article: <DescriptionOutlinedIcon fontSize="large" />,
-  other: <AirplayIcon fontSize="large" />,
+  video: <YouTubeIcon fontSize="large" style={{fill: "#c4302b"}} />,
+  audio: <MicNoneOutlinedIcon fontSize="large" style={{fill: "#8e44ad"}} />,
+  article: <DescriptionOutlinedIcon fontSize="large" style={{fill: "#16a085"}} />,
+  other: <AirplayIcon fontSize="large" style={{fill: '#2c3e50'}} />,
 };
 
 const PlaylistItem = ({
@@ -54,7 +54,7 @@ const PlaylistItem = ({
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
         name="checkbox"
-        color="primary"
+        color="black"
       />
       <P>{name}</P>
       {icon[category]}
