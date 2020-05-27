@@ -14,7 +14,7 @@ const Input = ({
   <FormControl>
     <input
       aria-label={label}
-      id={id}
+      id={id || null}
       onChange={onChangeHandler}
       placeholder={placeholder}
       type="text"
@@ -36,15 +36,15 @@ Input.defaultProps = {
   hasButton: false,
 };
 
-Input.propTypes = {
-  hasButton: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onButtonClick: PropTypes.func,
-  onChangeHandler: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
-};
+// Input.propTypes = {
+//   hasButton: PropTypes.bool,
+//   id: PropTypes.string.isRequired,
+//   label: PropTypes.string.isRequired,
+//   onButtonClick: PropTypes.func,
+//   onChangeHandler: PropTypes.func.isRequired,
+//   placeholder: PropTypes.string,
+//   value: PropTypes.string.isRequired,
+// };
 
 export default Input;
 

@@ -5,23 +5,23 @@ export const PlaylistContext = createContext();
 
 export default class PlaylistProvider extends React.Component {
   state = {
-    playlists: []
+    playlists: [],
   };
 
   componentDidMount() {
     this.setState({ playlists: mockPlaylistData });
   }
 
-  addPlaylist = () => {
-    const playlist =   {
-        id: null,
-        title: "",
-        user_id: 1,
-        status: 1,
-        playlistItems: [],
-      };
+  addPlaylist = (newPlaylist) => {
+    this.setState((prevState) => ({
+      playlists: [...prevState.playlists, newPlaylist],
+    }));
+  };
 
-    this.setState({playlists: [...this.state.playlists, playlist]});
+  removePlaylist = () => {
+    this.setState({
+      playlists: this.state.playlists.filter((p) => p.id),
+    });
   };
 
   setPlaylists = () => {};
@@ -33,10 +33,13 @@ export default class PlaylistProvider extends React.Component {
     const { setPlaylists } = this.state;
 
     return (
-      <PlaylistContext.Provider value={{
+      <PlaylistContext.Provider
+        value={{
           state: this.state,
-          addPlaylist: this.addPlaylist
-      }}>
+          addPlaylist: this.addPlaylist,
+          removePlaylist: this.removePlaylist,
+        }}
+      >
         {children}
       </PlaylistContext.Provider>
     );

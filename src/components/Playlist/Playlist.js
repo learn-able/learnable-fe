@@ -31,7 +31,7 @@ const Playlist = (props) => {
   const { id, playlistItems, status, title } = props;
   const isNewPlaylist = (id) => (id ? 3 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
-  const [localTitle, setLocalTitle] = useState(title);
+  const [playlistTitle, setPlaylistTitle] = useState(title);
   // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
   const [playlistItem, setPlaylistItem] = useState('');
 
@@ -54,8 +54,8 @@ const Playlist = (props) => {
         return (
           <PlaylistView1
             nextStep={nextStep}
-            onChangeHandler={setLocalTitle}
-            title={localTitle}
+            onChangeHandler={setPlaylistTitle}
+            title={playlistTitle}
           />
         );
       case 2:
@@ -65,7 +65,7 @@ const Playlist = (props) => {
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
-            title={localTitle}
+            title={playlistTitle}
           />
         );
       case 3:
@@ -75,7 +75,7 @@ const Playlist = (props) => {
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
-            title={localTitle}
+            title={playlistTitle}
           />
         );
       default:
@@ -85,7 +85,7 @@ const Playlist = (props) => {
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
-            title={localTitle}
+            title={playlistTitle}
           />
         );
     }

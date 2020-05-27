@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { PlaylistContext } from '../../contexts/playlistContext';
 import DatePickerInput from '../DatePickerInput/DatePickerInput';
 import Input from '../Input/Input';
 
@@ -18,44 +19,63 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-grow: 1;
-`
+`;
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-`
+`;
 
 const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => {
-  const [ step, setStep ] = useState(1);
+  const playlistContext = useContext(PlaylistContext);
+  const [step, setStep] = useState(1);
+
+  const mockPost = () => {
+    const newPlaylist = {
+      id: 3,
+      title: 'Learn TypeScript',
+      user_id: 1,
+      status: 1,
+      playlistItems: [],
+    };
+
+    playlistContext.removePlaylist();
+    playlistContext.addPlaylist(newPlaylist);
+  };
 
   return (
-  <Div>
+    <Div>
       1
-      {step === 1 &&
-      <Input
-        id="title"
-        hasButton
-        label="Title"
-        onButtonClick={() => setStep(2)}
-        onChangeHandler={(e) => onChangeHandler(e.target.value)}
-        placeholder="first, name your list:"
-        type="text"
-        value={title}
-      />}
-      {step === 2 &&
-      <Input
-        id="title"
-        label="Title"
-        onChangeHandler={(e) => onChangeHandler(e.target.value)}
-        placeholder="first, name your list:"
-        type="text"
-        value={title}
-      />}
+      {step === 1 && (
+        <Input
+          id="title"
+          hasButton
+          label="Title"
+          onButtonClick={() => setStep(2)}
+          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          placeholder="first, name your list:"
+          type="text"
+          value={title}
+        />
+      )}
+      {step === 2 && (
+        <Input
+          label="Title"
+          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          placeholder="first, name your list:"
+          type="text"
+          value={title}
+        />
+      )}
       {step === 2 && <DatePickerInput />}
-    {step === 2 && <ButtonWrapper><Button onClick={() => nextStep()}>CREATE PLAYLIST</Button></ButtonWrapper>}
-  </Div>
-  )
+      {step === 2 && (
+        <ButtonWrapper>
+          <Button onClick={() => mockPost()}>CREATE PLAYLIST</Button>
+        </ButtonWrapper>
+      )}
+    </Div>
+  );
 };
 
 export default PlaylistView1;

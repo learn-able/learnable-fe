@@ -10,10 +10,10 @@ import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import ProgressBar from '../ProgressBar/ProgressBar';
 
 const buttons = [
-  {label: 'Video', icon: <YouTubeIcon fontSize="large" />},
-  {label: 'Audio', icon: <MicNoneOutlinedIcon fontSize="large" />},
-  {label: 'Article', icon: <DescriptionOutlinedIcon fontSize="large" />},
-  {label: 'Other', icon: <AirplayIcon fontSize="large" />},
+  { label: 'Video', icon: <YouTubeIcon fontSize="large" /> },
+  { label: 'Audio', icon: <MicNoneOutlinedIcon fontSize="large" /> },
+  { label: 'Article', icon: <DescriptionOutlinedIcon fontSize="large" /> },
+  { label: 'Other', icon: <AirplayIcon fontSize="large" /> },
 ];
 
 const Button = styled.button.attrs(() => ({
@@ -47,12 +47,12 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: ${({ theme }) => theme.spacers.xxs};
-`
+`;
 
 const Span = styled.span`
   color: red;
   text-align: center;
-`
+`;
 
 const PlaylistView3 = ({
   prevStep,
@@ -65,15 +65,19 @@ const PlaylistView3 = ({
     3
     <PlaylistItem />
     <Input
-      id="title"
-      label="Title"
-      onChangeHandler={""}
+      label="Playlist item title"
+      onChangeHandler={() => console.log('boop')}
       placeholder="what should we call this?"
       type="text"
-      value={""}
+      value=""
     />
     <Grid>
-      {buttons.map(btn => <Button>{ btn.icon }{ btn.label }</Button>)}
+      {buttons.map((btn) => (
+        <Button key={btn.label}>
+          {btn.icon}
+          {btn.label}
+        </Button>
+      ))}
     </Grid>
     <DoneButton onClick={() => prevStep()}>Done</DoneButton>
     <Span onClick={() => prevStep()}>Cancel</Span>

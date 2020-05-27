@@ -39,10 +39,18 @@ const AddPlaylist = () => {
     <>
       <Button
         type="button"
-        onClick={playlistContext.addPlaylist}
+        onClick={() =>
+          playlistContext.addPlaylist({
+            id: null,
+            title: '',
+            user_id: 999,
+            status: 1,
+            playlistItems: [],
+          })
+        }
         disabled={isDisabled}
-        initial={{opacity: 0}}
-        animate={{opacity: 1, transition: {delay: 0.6}}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.6 } }}
         whileHover={!isDisabled && { scale: 1.025 }}
         whileTap={!isDisabled && { scale: 0.98 }}
       >
