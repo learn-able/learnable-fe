@@ -1,18 +1,18 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
-import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
 const childVariants = {
   active: {
-    opacity: 1
+    opacity: 1,
   },
   disabled: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 };
 
 const Section = styled(motion.section)`
@@ -21,32 +21,32 @@ const Section = styled(motion.section)`
   display: flex;
   flex-direction: column;
   margin: 0 ${({ theme }) => theme.spacers.xs};
+  min-height: min-content;
+  overflow: scroll;
   padding: ${({ theme }) => theme.spacers.xs};
   transform-origin: center;
   width: 25rem;
 `;
 
 const Playlist = (props) => {
-  const {id, status} = props;
-
-  const isNewPlaylist = (id) => (id ? 4 : 1);
-
+  const { id, playlistItems, status, title } = props;
+  const isNewPlaylist = (id) => (id ? 3 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
+  const [playlistTitle, setPlaylistTitle] = useState(title);
+  // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
+  const [playlistItem, setPlaylistItem] = useState('');
+  const [playlistDate, setPlaylistDate] = useState(
+    moment().format('MM/DD/YYYY')
+  );
 
-  const switchViews = () => {
-    switch (step) {
-      case 1:
-        return <PlaylistView1 {...props} />;
-      case 2:
-        return <PlaylistView2 {...props} />;
-      case 3:
-        return <PlaylistView3 {...props} />;
-      case 4:
-        return <PlaylistView4 {...props} />;
-    }
-  };
+  console.log(playlistDate);
 
   const nextStep = () => {
+    if (step > 3) {
+      setStep(3);
+      return;
+    }
+
     setStep(step + 1);
   };
 
@@ -54,16 +54,62 @@ const Playlist = (props) => {
     setStep(step - 1);
   };
 
+  const switchViews = () => {
+    switch (step) {
+      case 1:
+        return (
+          <PlaylistView1
+            onChangeHandler={setPlaylistTitle}
+            playlistDate={playlistDate}
+            setPlaylistDate={setPlaylistDate}
+            title={playlistTitle}
+          />
+        );
+      case 2:
+        return (
+          <PlaylistView2
+            nextStep={nextStep}
+            setPlaylistItem={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={playlistTitle}
+          />
+        );
+      case 3:
+        return (
+          <PlaylistView3
+            prevStep={prevStep}
+            setPlaylistItem={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={playlistTitle}
+          />
+        );
+      default:
+        return (
+          <PlaylistView3
+            prevStep={prevStep}
+            setPlaylistItem={setPlaylistItem}
+            playlistItem={playlistItem}
+            playlistItems={playlistItems}
+            title={playlistTitle}
+          />
+        );
+    }
+  };
+
   return (
-    <Section
-      variants={childVariants}
-      whileHover={{ scale: 1.02 }}
-    >
+    <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
       {switchViews(step)}
-      {step > 1 && <button onClick={prevStep}>-</button>}
-      {step < 4 && <button onClick={nextStep}>+</button>}
     </Section>
   );
 };
 
 export default Playlist;
+
+// {
+//   step > 1 && <button onClick={prevStep}>-</button>;
+// }
+// {
+//   step < 4 && <button onClick={nextStep}>+</button>;
+// }

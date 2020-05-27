@@ -4,6 +4,7 @@ export const mockPlaylistData = [
     title: 'Learn Javascript',
     user_id: 1,
     status: 1,
+    due_date: '07/04/2020',
     playlistItems: [
       {
         id: 1,
@@ -19,6 +20,7 @@ export const mockPlaylistData = [
     title: 'Learn Ruby',
     user_id: 1,
     status: 1,
+    due_date: '08/14/2020',
     playlistItems: [
       {
         id: 2,

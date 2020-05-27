@@ -25,6 +25,7 @@ export default {
     below960: 'only screen and (max-width: 960px)',
   },
   spacers: {
+    xxs: '0.25rem',
     xs: '1rem',
     sm: '2.5rem',
     md: '5rem',

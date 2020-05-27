@@ -1,15 +1,25 @@
-import PlaylistTitle from '../PlaylistTitle/PlaylistTitle'
-import DatePickerInput from '../DatePickerInput/DatePickerInput'
-import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer'
+import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer';
 
-const PlaylistView2 = ({ title, playlistItems }) => {
-  return (
-    <>
-      <PlaylistTitle title={title} playlistItems={playlistItems} />
-      <DatePickerInput />
-      <PlaylistItemContainer playlistItems={playlistItems} />
-    </>
-  )
-}
+const PlaylistView3 = ({
+  nextStep,
+  playlistItem,
+  playlistItems,
+  setPlaylistItem,
+  title,
+}) => (
+  <>
+    2 
+    <PlaylistTitle title={title} playlistItems={playlistItems} />
+    <ProgressBar playlistItems={playlistItems} />
+    <PlaylistItemContainer
+      nextStep={nextStep}
+      playlistItem={playlistItem}
+      playlistItems={playlistItems}
+      setPlaylistItem={setPlaylistItem}
+    />
+  </>
+);
 
-export default PlaylistView2
+export default PlaylistView3;

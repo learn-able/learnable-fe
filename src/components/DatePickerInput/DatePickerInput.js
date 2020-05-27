@@ -1,13 +1,10 @@
 import { KeyboardDatePicker } from '@material-ui/pickers';
-import moment from 'moment'
-import React, { useState } from 'react';
+import React from 'react';
 
-const DatePickerInput = () => {
-  const [selectedDate, handleDateChange] = useState(moment().format('MM/DD/YYYY'));
-
+const DatePickerInput = ({ playlistDate, setPlaylistDate }) => {
   const formatDateChange = (date) => {
-    handleDateChange(date.format('MM/DD/YYYY'));
-  }
+    setPlaylistDate(date.format('MM/DD/YYYY'));
+  };
 
   return (
     <KeyboardDatePicker
@@ -17,14 +14,14 @@ const DatePickerInput = () => {
       format="MM/DD/YYYY"
       margin="normal"
       id="date-picker-inline"
-      inputValue={selectedDate}
-      value={selectedDate}
+      inputValue={playlistDate}
+      value={playlistDate}
       onChange={formatDateChange}
       KeyboardButtonProps={{
         'aria-label': 'change date',
       }}
     />
-  )
-}
+  );
+};
 
-export default DatePickerInput
+export default DatePickerInput;
