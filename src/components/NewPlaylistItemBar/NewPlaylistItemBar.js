@@ -67,7 +67,7 @@ const NewPlaylistItemBar = ({
       <Div>
         <PlaylistItemCount>{playlistItems.length}</PlaylistItemCount>
         <Button onClick={() => toggleInputActive(!inputActive)}>
-          + <Span>new item</Span>
+          {inputActive ? <Span>- close</Span> : <Span>+ new item</Span>}
         </Button>
       </Div>
 

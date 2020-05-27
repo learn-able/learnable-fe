@@ -31,6 +31,7 @@ const PlaylistView1 = ({ nextStep, onChangeHandler, title }) => {
 
   return (
   <Div>
+      1
       {step === 1 &&
       <Input
         id="title"

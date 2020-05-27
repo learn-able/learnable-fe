@@ -1,28 +1,25 @@
-import styled from 'styled-components';
-import Input from '../Input/Input';
-import DatePickerInput from '../DatePickerInput/DatePickerInput';
+import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer';
 
-const Button = styled.button.attrs(() => ({
-  type: 'button',
-}))`
-  background: ${({ theme }) => theme.colors.secondary};
-  color: ${({ theme }) => theme.colors.white};
-  width: 100%;
-`;
-
-const PlaylistView2 = ({ nextStep, onChangeHandler, title }) => (
+const PlaylistView3 = ({
+  nextStep,
+  playlistItem,
+  playlistItems,
+  setPlaylistItem,
+  title,
+}) => (
   <>
-    <Input
-      id="playlist-title"
-      label="Title"
-      onChangeHandler={(e) => onChangeHandler(e.target.value)}
-      placeholder="first, name your list:"
-      type="text"
-      value={title}
+    2 
+    <PlaylistTitle title={title} playlistItems={playlistItems} />
+    <ProgressBar playlistItems={playlistItems} />
+    <PlaylistItemContainer
+      nextStep={nextStep}
+      playlistItem={playlistItem}
+      playlistItems={playlistItems}
+      setPlaylistItem={setPlaylistItem}
     />
-    <DatePickerInput />
-    <Button onClick={() => nextStep()}>SAVE</Button>
   </>
 );
 
-export default PlaylistView2;
+export default PlaylistView3;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
-import PlaylistView4 from '../PlaylistViews/PlaylistView4';
 
 const childVariants = {
   active: {
@@ -21,6 +20,8 @@ const Section = styled(motion.section)`
   display: flex;
   flex-direction: column;
   margin: 0 ${({ theme }) => theme.spacers.xs};
+  min-height: min-content;
+  overflow: scroll;
   padding: ${({ theme }) => theme.spacers.xs};
   transform-origin: center;
   width: 25rem;
@@ -28,15 +29,15 @@ const Section = styled(motion.section)`
 
 const Playlist = (props) => {
   const { id, playlistItems, status, title } = props;
-  const isNewPlaylist = (id) => (id ? 4 : 1);
+  const isNewPlaylist = (id) => (id ? 3 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [localTitle, setLocalTitle] = useState(title);
   // TODO When a Playlist item is submitted, within that function, we will need set the value of playlistItem back to an empty string. Currently it is persisting.
   const [playlistItem, setPlaylistItem] = useState('');
 
   const nextStep = () => {
-    if (step > 4) {
-      setStep(4);
+    if (step > 3) {
+      setStep(3);
       return;
     }
 
@@ -59,7 +60,7 @@ const Playlist = (props) => {
         );
       case 2:
         return (
-          <PlaylistView3
+          <PlaylistView2
             nextStep={nextStep}
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
@@ -69,8 +70,8 @@ const Playlist = (props) => {
         );
       case 3:
         return (
-          <PlaylistView4
-            nextStep={nextStep}
+          <PlaylistView3
+            prevStep={prevStep}
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
@@ -79,7 +80,8 @@ const Playlist = (props) => {
         );
       default:
         return (
-          <PlaylistView4
+          <PlaylistView3
+            prevStep={prevStep}
             setPlaylistItem={setPlaylistItem}
             playlistItem={playlistItem}
             playlistItems={playlistItems}
@@ -88,8 +90,6 @@ const Playlist = (props) => {
         );
     }
   };
-
-  console.log(playlistItem);
 
   return (
     <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
