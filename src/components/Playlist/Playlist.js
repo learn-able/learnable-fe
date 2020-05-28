@@ -58,6 +58,7 @@ const Playlist = (props) => {
 
   const mockPostPlaylistItem = () => {
     const newPlaylistItem = {
+      id: 3,
       playlistId: id,
       title: playlistItemTitle,
       category,
@@ -85,9 +86,10 @@ const Playlist = (props) => {
           <PlaylistView2
             dueDate={playlistDate}
             nextStep={nextStep}
-            setPlaylistItemURL={setPlaylistItemURL}
+            playlistId={id}
             playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
+            setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
           />
         );
@@ -111,9 +113,10 @@ const Playlist = (props) => {
           <PlaylistView2
             dueDate={playlistDate}
             nextStep={nextStep}
-            setPlaylistItemURL={setPlaylistItemURL}
+            playlistId={id}
             playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
+            setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
           />
         );
