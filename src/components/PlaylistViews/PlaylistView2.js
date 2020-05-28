@@ -1,7 +1,13 @@
+import styled from 'styled-components';
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import ProgressBar from '../ProgressBar/ProgressBar';
-import PlaylistItemContainer from '../PlaylistItemContainer/PlaylistItemContainer';
 import DueDate from '../DueDate/DueDate';
+import PlaylistItem from '../PlaylistItem/PlaylistItem';
+import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
+
+const Div = styled.div`
+  flex-grow: 1;
+`;
 
 const PlaylistView3 = ({
   dueDate,
@@ -10,19 +16,28 @@ const PlaylistView3 = ({
   playlistItems,
   setPlaylistItem,
   title,
-}) => (
-  <>
-    2
-    <PlaylistTitle title={title} playlistItems={playlistItems} />
-    <DueDate dueDate={dueDate} />
-    <ProgressBar playlistItems={playlistItems} />
-    <PlaylistItemContainer
-      nextStep={nextStep}
-      playlistItem={playlistItem}
-      playlistItems={playlistItems}
-      setPlaylistItem={setPlaylistItem}
-    />
-  </>
-);
+}) => {
+  const items = playlistItems.map((item) => (
+    <PlaylistItem key={item.id} {...item} />
+  ));
+
+  return (
+    <>
+      2
+      <PlaylistTitle title={title} playlistItems={playlistItems} />
+      <DueDate dueDate={dueDate} />
+      <ProgressBar playlistItems={playlistItems} />
+      <Div>
+        <NewPlaylistItemBar
+          nextStep={nextStep}
+          setPlaylistItem={setPlaylistItem}
+          playlistItem={playlistItem}
+          playlistItems={playlistItems}
+        />
+        {items}
+      </Div>
+    </>
+  );
+};
 
 export default PlaylistView3;

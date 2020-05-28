@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
 const Button = styled(motion.button)`
+  background: transparent;
   border: 1px dashed ${({ theme }) => theme.colors.grayDark};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   font-size: ${({ theme }) => theme.fontSizes.md};

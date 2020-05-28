@@ -34,11 +34,11 @@ const Playlist = (props) => {
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
   // TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
-  const [playlistItem, setPlaylistItem] = useState('');
+  const [playlistItemURL, setPlaylistItemURL] = useState('');
+  const [playlistItemTitle, setPlaylistItemTitle] = useState('');
   const [playlistDate, setPlaylistDate] = useState(
     due_date || moment().format('MM/DD/YYYY')
   );
-  console.log(id, 'hello', playlistDate);
 
   const nextStep = () => {
     if (step > 3) {
@@ -69,8 +69,8 @@ const Playlist = (props) => {
           <PlaylistView2
             dueDate={playlistDate}
             nextStep={nextStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
+            setPlaylistItemURL={setPlaylistItemURL}
+            playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
             title={playlistTitle}
           />
@@ -79,18 +79,21 @@ const Playlist = (props) => {
         return (
           <PlaylistView3
             prevStep={prevStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
+            setPlaylistItemURL={setPlaylistItemURL}
+            playlistItemTitle={playlistItemTitle}
+            setPlaylistItemTitle={setPlaylistItemTitle}
+            playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
             title={playlistTitle}
           />
         );
       default:
         return (
-          <PlaylistView3
-            prevStep={prevStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
+          <PlaylistView2
+            dueDate={playlistDate}
+            nextStep={nextStep}
+            setPlaylistItemURL={setPlaylistItemURL}
+            playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
             title={playlistTitle}
           />
