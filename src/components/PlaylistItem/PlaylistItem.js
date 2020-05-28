@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const Div = styled.div`
@@ -10,7 +14,21 @@ const Div = styled.div`
   border-radius: ${({ theme }) => theme.styles.borderRadius};
 `;
 
-const PlaylistItem = ({ isComplete, title, url }) => (
+const P = styled.p`
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 70%;
+`;
+
+const icon = {
+  Video: <YouTubeIcon fontSize="large" />,
+  Audio: <MicNoneOutlinedIcon fontSize="large" />,
+  Article: <DescriptionOutlinedIcon fontSize="large" />,
+  Other: <AirplayIcon fontSize="large" />,
+};
+
+const PlaylistItem = ({ category, isComplete, title, url }) => (
   <Div>
     <Checkbox
       checked={isComplete}
@@ -18,7 +36,8 @@ const PlaylistItem = ({ isComplete, title, url }) => (
       name="checkbox"
       color="primary"
     />
-    <p>{title}</p>
+    <P>{title}</P>
+    {icon[category]}
   </Div>
 );
 

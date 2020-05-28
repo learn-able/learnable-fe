@@ -18,15 +18,27 @@ export default class PlaylistProvider extends React.Component {
     }));
   };
 
+  addPlaylistItem = (newPlaylistItem) => {
+    const { playlists } = this.state;
+    const currPlaylist = playlists.filter(
+      (p) => p.id === newPlaylistItem.playlistId
+    )[0];
+
+    currPlaylist.playlistItems.push(newPlaylistItem);
+
+    this.setState({
+      playlists: [
+        ...playlists.filter((p) => p.id !== newPlaylistItem.playlistId),
+        currPlaylist,
+      ],
+    });
+  };
+
   removePlaylist = () => {
     this.setState({
       playlists: this.state.playlists.filter((p) => p.id),
     });
   };
-
-  setPlaylists = () => {};
-
-  setPlaylistStatus = (id) => {};
 
   render() {
     const { children } = this.props;
@@ -36,6 +48,7 @@ export default class PlaylistProvider extends React.Component {
         value={{
           state: this.state,
           addPlaylist: this.addPlaylist,
+          addPlaylistItem: this.addPlaylistItem,
           removePlaylist: this.removePlaylist,
         }}
       >

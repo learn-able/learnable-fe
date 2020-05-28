@@ -51,9 +51,9 @@ const Span = styled.span`
 
 const NewPlaylistItemBar = ({
   nextStep,
-  playlistItem,
+  playlistItemURL,
   playlistItems,
-  setPlaylistItem,
+  setPlaylistItemURL,
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
   const onItemSubmit = () => {
@@ -77,10 +77,10 @@ const NewPlaylistItemBar = ({
           hasButton
           label="Item"
           onButtonClick={() => onItemSubmit()}
-          onChangeHandler={(e) => setPlaylistItem(e.target.value)}
+          onChangeHandler={(e) => setPlaylistItemURL(e.target.value)}
           placeholder="now, add an item URL:"
           type="text"
-          value={playlistItem}
+          value={playlistItemURL}
         />
       )}
     </Article>

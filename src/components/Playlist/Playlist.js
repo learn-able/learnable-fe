@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import { PlaylistContext } from '../../contexts/playlistContext';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
@@ -27,18 +28,20 @@ const Section = styled(motion.section)`
   transform-origin: center;
   width: 25rem;
 `;
+// TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
 
 const Playlist = (props) => {
+  const playlistContext = useContext(PlaylistContext);
   const { id, due_date, playlistItems, status, title } = props;
-  const isNewPlaylist = (id) => (id ? 3 : 1);
+  const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
-  // TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
-  const [playlistItem, setPlaylistItem] = useState('');
+  const [playlistItemURL, setPlaylistItemURL] = useState('');
+  const [category, setCategory] = useState(null);
+  const [playlistItemTitle, setPlaylistItemTitle] = useState('');
   const [playlistDate, setPlaylistDate] = useState(
     due_date || moment().format('MM/DD/YYYY')
   );
-  console.log(id, 'hello', playlistDate);
 
   const nextStep = () => {
     if (step > 3) {
@@ -51,6 +54,19 @@ const Playlist = (props) => {
 
   const prevStep = () => {
     setStep(step - 1);
+  };
+
+  const mockPostPlaylistItem = () => {
+    const newPlaylistItem = {
+      playlistId: id,
+      title: playlistItemTitle,
+      category,
+      url: playlistItemURL,
+      isComplete: false,
+    };
+
+    playlistContext.addPlaylistItem(newPlaylistItem);
+    prevStep();
   };
 
   const switchViews = () => {
@@ -69,8 +85,8 @@ const Playlist = (props) => {
           <PlaylistView2
             dueDate={playlistDate}
             nextStep={nextStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
+            setPlaylistItemURL={setPlaylistItemURL}
+            playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
             title={playlistTitle}
           />
@@ -78,19 +94,25 @@ const Playlist = (props) => {
       case 3:
         return (
           <PlaylistView3
+            category={category}
+            mockPostPlaylistItem={mockPostPlaylistItem}
             prevStep={prevStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
             playlistItems={playlistItems}
+            playlistItemTitle={playlistItemTitle}
+            playlistItemURL={playlistItemURL}
+            setCategory={setCategory}
+            setPlaylistItemTitle={setPlaylistItemTitle}
+            setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
           />
         );
       default:
         return (
-          <PlaylistView3
-            prevStep={prevStep}
-            setPlaylistItem={setPlaylistItem}
-            playlistItem={playlistItem}
+          <PlaylistView2
+            dueDate={playlistDate}
+            nextStep={nextStep}
+            setPlaylistItemURL={setPlaylistItemURL}
+            playlistItemURL={playlistItemURL}
             playlistItems={playlistItems}
             title={playlistTitle}
           />
