@@ -12,9 +12,9 @@ const Div = styled.div`
 const PlaylistView3 = ({
   dueDate,
   nextStep,
-  playlistItem,
   playlistItems,
-  setPlaylistItem,
+  playlistItemURL,
+  setPlaylistItemURL,
   title,
 }) => {
   const items = playlistItems.map((item) => (
@@ -30,9 +30,9 @@ const PlaylistView3 = ({
       <Div>
         <NewPlaylistItemBar
           nextStep={nextStep}
-          setPlaylistItem={setPlaylistItem}
-          playlistItem={playlistItem}
+          playlistItemURL={playlistItemURL}
           playlistItems={playlistItems}
+          setPlaylistItemURL={setPlaylistItemURL}
         />
         {items}
       </Div>

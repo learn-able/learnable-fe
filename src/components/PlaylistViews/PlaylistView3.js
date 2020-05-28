@@ -54,39 +54,38 @@ const Span = styled.span`
 `;
 
 const PlaylistView3 = ({
+  category,
+  mockPostPlaylistItem,
   prevStep,
   playlistItemTitle,
   playlistItemURL,
   playlistItems,
+  setCategory,
   setPlaylistItemURL,
   setPlaylistItemTitle,
   title,
-}) => {
-  const [category, setCategory] = useState(null);
-
-  return (
-    <>
-      3
-      <PlaylistItem category={category} title={playlistItemTitle} />
-      <Input
-        label="Playlist item title"
-        onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
-        placeholder="what should we call this?"
-        type="text"
-        value={playlistItemTitle}
-      />
-      <Grid>
-        {buttons.map((btn) => (
-          <Button key={btn.label} onClick={() => setCategory(btn.label)}>
-            {btn.icon}
-            {btn.label}
-          </Button>
-        ))}
-      </Grid>
-      <DoneButton onClick={() => prevStep()}>Done</DoneButton>
-      <Span onClick={() => prevStep()}>Cancel</Span>
-    </>
-  );
-};
+}) => (
+  <>
+    3
+    <PlaylistItem category={category} title={playlistItemTitle} />
+    <Input
+      label="Playlist item title"
+      onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
+      placeholder="what should we call this?"
+      type="text"
+      value={playlistItemTitle}
+    />
+    <Grid>
+      {buttons.map((btn) => (
+        <Button key={btn.label} onClick={() => setCategory(btn.label)}>
+          {btn.icon}
+          {btn.label}
+        </Button>
+      ))}
+    </Grid>
+    <DoneButton onClick={() => mockPostPlaylistItem()}>Done</DoneButton>
+    <Span onClick={() => prevStep()}>Cancel</Span>
+  </>
+);
 
 export default PlaylistView3;
