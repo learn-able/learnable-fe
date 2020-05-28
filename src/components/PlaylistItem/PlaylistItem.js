@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
+import { PlaylistContext } from '../../contexts/playlistContext';
 
 const Div = styled.div`
   align-items: center;
@@ -28,17 +30,31 @@ const icon = {
   Other: <AirplayIcon fontSize="large" />,
 };
 
-const PlaylistItem = ({ category, isComplete, title, url }) => (
-  <Div>
-    <Checkbox
-      checked={isComplete}
-      onChange={console.log('test')}
-      name="checkbox"
-      color="primary"
-    />
-    <P>{title}</P>
-    {icon[category]}
-  </Div>
-);
+const PlaylistItem = ({ category, id, isComplete, playlistId, title, url }) => {
+  const playlistContext = useContext(PlaylistContext);
+  const mockToggleIsComplete = () => {
+    playlistContext.updatePlaylistItem({
+      id,
+      playlistId,
+      title,
+      category,
+      url,
+      isComplete: !isComplete,
+    });
+  };
+
+  return (
+    <Div>
+      <Checkbox
+        checked={isComplete}
+        onChange={() => mockToggleIsComplete()}
+        name="checkbox"
+        color="primary"
+      />
+      <P>{title}</P>
+      {icon[category]}
+    </Div>
+  );
+};
 
 export default PlaylistItem;

@@ -9,16 +9,17 @@ const Div = styled.div`
   flex-grow: 1;
 `;
 
-const PlaylistView3 = ({
+const PlaylistView2 = ({
   dueDate,
   nextStep,
+  playlistId,
   playlistItems,
   playlistItemURL,
   setPlaylistItemURL,
   title,
 }) => {
   const items = playlistItems.map((item) => (
-    <PlaylistItem key={item.id} {...item} />
+    <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
   ));
 
   return (
@@ -40,4 +41,4 @@ const PlaylistView3 = ({
   );
 };
 
-export default PlaylistView3;
+export default PlaylistView2;
