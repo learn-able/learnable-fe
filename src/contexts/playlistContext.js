@@ -46,18 +46,33 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const addPlaylistItem = (newPlaylistItem) => {
+  const updatePlaylist = (updatedPlaylist) => {
     const { playlists } = state;
 
     setState({
       playlists: playlists.map((playlist) => {
-        if (playlist.id === newPlaylistItem.playlistId) {
-          playlist.playlistItems = [...playlist.playlistItems, newPlaylistItem];
+        if (playlist.id === updatedPlaylist.id) {
+          playlist = updatedPlaylist;
         }
 
         return playlist;
       }),
     });
+  };
+
+  const postPlaylistItem = async (newPlaylistItem) => {
+    try {
+      const responseData = await sendRequest(
+        `http://learnablebe.herokuapp.com/api/v0/items`,
+        'POST',
+        JSON.stringify(newPlaylistItem),
+        { 'Content-Type': 'application/json' }
+      );
+
+      updatePlaylist(responseData.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const updatePlaylistItem = (newPlaylistItem) => {
@@ -91,8 +106,8 @@ const PlaylistProvider = ({ children }) => {
       value={{
         state,
         addPlaylist,
-        addPlaylistItem,
         postPlaylist,
+        postPlaylistItem,
         updatePlaylistItem,
         removePlaylist,
       }}

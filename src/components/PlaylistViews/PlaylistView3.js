@@ -55,7 +55,7 @@ const Span = styled.span`
 
 const PlaylistView3 = ({
   category,
-  mockPostPlaylistItem,
+  handleSubmit,
   prevStep,
   playlistItemTitle,
   playlistItemURL,
@@ -83,7 +83,7 @@ const PlaylistView3 = ({
         </Button>
       ))}
     </Grid>
-    <DoneButton onClick={() => mockPostPlaylistItem()}>Done</DoneButton>
+    <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
     <Span onClick={() => prevStep()}>Cancel</Span>
   </>
 );

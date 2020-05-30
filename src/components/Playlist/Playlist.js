@@ -56,17 +56,16 @@ const Playlist = (props) => {
     setStep(step - 1);
   };
 
-  const mockPostPlaylistItem = () => {
+  const handleSubmit = () => {
     const newPlaylistItem = {
-      id: 3,
-      playlistId: id,
-      title: playlistItemTitle,
+      playlist_id: id,
+      name: playlistItemTitle,
       category,
       url: playlistItemURL,
-      isComplete: false,
+      is_complete: false,
     };
 
-    playlistContext.addPlaylistItem(newPlaylistItem);
+    playlistContext.postPlaylistItem(newPlaylistItem);
     prevStep();
   };
 
@@ -97,7 +96,7 @@ const Playlist = (props) => {
         return (
           <PlaylistView3
             category={category}
-            mockPostPlaylistItem={mockPostPlaylistItem}
+            handleSubmit={handleSubmit}
             prevStep={prevStep}
             playlistItems={playlist_items}
             playlistItemTitle={playlistItemTitle}
