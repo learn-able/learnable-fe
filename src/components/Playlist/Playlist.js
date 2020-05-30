@@ -66,6 +66,9 @@ const Playlist = (props) => {
     };
 
     playlistContext.postPlaylistItem(newPlaylistItem);
+    setPlaylistItemTitle('');
+    setPlaylistItemURL('');
+    setCategory('');
     prevStep();
   };
 
