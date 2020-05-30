@@ -45,9 +45,9 @@ const AddPlaylist = () => {
             id: null,
             title: '',
             user_id: 1,
-            status: 1,
+            status: 'valid',
             due_date: '',
-            playlistItems: [],
+            playlist_items: [],
           })
         }
         disabled={isDisabled}
