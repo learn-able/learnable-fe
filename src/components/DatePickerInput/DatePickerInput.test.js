@@ -28,7 +28,7 @@ function getDateToday() {
   return `${mm}/${dd}/${yyyy}`;
 }
 
-function renderAddPlaylist(props, context) {
+function renderDatePickerInput(props, context) {
   const utils = render(
     <UserProvider>
       <PlaylistContext.Provider value={context}>
@@ -47,7 +47,7 @@ function renderAddPlaylist(props, context) {
 const setPlaylistDate = jest.fn();
 
 test('it renders an input field and button', () => {
-  const { getByLabelText } = renderAddPlaylist({});
+  const { getByLabelText } = renderDatePickerInput({});
 
   const button = getByLabelText('change date');
   const input = document.querySelector('input');
@@ -58,7 +58,7 @@ test('it renders an input field and button', () => {
 
 test('it defaults to current date but can change', async () => {
   const today = getDateToday();
-  const { getByLabelText } = renderAddPlaylist({
+  const { getByLabelText } = renderDatePickerInput({
     playlistDate: today,
     setPlaylistDate,
   });
