@@ -26,10 +26,12 @@ const P = styled.p`
 `;
 
 const icon = {
-  video: <YouTubeIcon fontSize="large" style={{fill: "#c4302b"}} />,
-  audio: <MicNoneOutlinedIcon fontSize="large" style={{fill: "#8e44ad"}} />,
-  article: <DescriptionOutlinedIcon fontSize="large" style={{fill: "#16a085"}} />,
-  other: <AirplayIcon fontSize="large" style={{fill: '#2c3e50'}} />,
+  video: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b' }} />,
+  audio: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad' }} />,
+  article: (
+    <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085' }} />
+  ),
+  other: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
 };
 
 const PlaylistItem = ({
