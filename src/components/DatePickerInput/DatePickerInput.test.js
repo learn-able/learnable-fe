@@ -44,6 +44,8 @@ function renderAddPlaylist(props, context) {
   return { ...utils };
 }
 
+const setPlaylistDate = jest.fn();
+
 test('it renders an input field and button', () => {
   const { getByLabelText } = renderAddPlaylist({});
 
@@ -56,8 +58,9 @@ test('it renders an input field and button', () => {
 
 test('it defaults to current date but can change', async () => {
   const today = getDateToday();
-  const { debug, getByLabelText, getByText } = renderAddPlaylist({
+  const { getByLabelText } = renderAddPlaylist({
     playlistDate: today,
+    setPlaylistDate,
   });
 
   const button = getByLabelText('change date');
@@ -67,8 +70,8 @@ test('it defaults to current date but can change', async () => {
   fireEvent.click(button);
 
   await waitFor(() => {
-    // const fifteenth = getByText('15');
-    // fireEvent.click(fifteenth);
-    // fireEvent.change(input, { target: { value: '12/31/2020' } });
+    fireEvent.change(input, { target: { value: '12/31/2020' } });
+    expect(setPlaylistDate).toHaveBeenCalledTimes(1);
+    expect(setPlaylistDate).toHaveBeenCalledWith('12/31/2020');
   });
 });
