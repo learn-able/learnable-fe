@@ -36,18 +36,14 @@ const PlaylistView1 = ({
   const playlistContext = useContext(PlaylistContext);
   const [step, setStep] = useState(1);
 
-  const mockPost = () => {
+  const handleSubmit = () => {
     const newPlaylist = {
-      id: 3,
-      title: 'Learn TypeScript',
       user_id: 1,
-      status: 1,
+      title,
       due_date: playlistDate,
-      playlistItems: [],
     };
 
-    playlistContext.removePlaylist();
-    playlistContext.addPlaylist(newPlaylist);
+    playlistContext.postPlaylist(newPlaylist);
   };
 
   return (
@@ -82,7 +78,7 @@ const PlaylistView1 = ({
       )}
       {step === 2 && (
         <ButtonWrapper>
-          <Button onClick={() => mockPost()}>CREATE PLAYLIST</Button>
+          <Button onClick={() => handleSubmit()}>CREATE PLAYLIST</Button>
         </ButtonWrapper>
       )}
     </Div>

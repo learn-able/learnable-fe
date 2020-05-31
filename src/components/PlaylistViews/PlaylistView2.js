@@ -18,6 +18,9 @@ const PlaylistView2 = ({
   setPlaylistItemURL,
   title,
 }) => {
+  if (!playlistItems) {
+    playlistItems = [];
+  }
   const items = playlistItems.map((item) => (
     <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
   ));

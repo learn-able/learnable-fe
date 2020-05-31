@@ -24,34 +24,37 @@ const P = styled.p`
 `;
 
 const icon = {
-  Video: <YouTubeIcon fontSize="large" />,
-  Audio: <MicNoneOutlinedIcon fontSize="large" />,
-  Article: <DescriptionOutlinedIcon fontSize="large" />,
-  Other: <AirplayIcon fontSize="large" />,
+  video: <YouTubeIcon fontSize="large" />,
+  audio: <MicNoneOutlinedIcon fontSize="large" />,
+  article: <DescriptionOutlinedIcon fontSize="large" />,
+  other: <AirplayIcon fontSize="large" />,
 };
 
-const PlaylistItem = ({ category, id, isComplete, playlistId, title, url }) => {
+const PlaylistItem = ({
+  category,
+  id,
+  is_complete,
+  name,
+  playlist_id,
+  url,
+}) => {
   const playlistContext = useContext(PlaylistContext);
-  const mockToggleIsComplete = () => {
-    playlistContext.updatePlaylistItem({
-      id,
-      playlistId,
-      title,
-      category,
-      url,
-      isComplete: !isComplete,
+
+  const handleCheckboxToggle = () => {
+    playlistContext.patchPlaylist(playlist_id, id, {
+      is_complete: !is_complete,
     });
   };
 
   return (
     <Div>
       <Checkbox
-        checked={isComplete}
-        onChange={() => mockToggleIsComplete()}
+        checked={is_complete}
+        onChange={() => handleCheckboxToggle()}
         name="checkbox"
         color="primary"
       />
-      <P>{title}</P>
+      <P>{name}</P>
       {icon[category]}
     </Div>
   );
