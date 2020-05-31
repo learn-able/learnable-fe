@@ -32,7 +32,7 @@ const Section = styled(motion.section)`
 
 const Playlist = (props) => {
   const playlistContext = useContext(PlaylistContext);
-  const { id, due_date, playlistItems, status, title } = props;
+  const { id, due_date, playlist_items, status, title } = props;
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
@@ -56,17 +56,19 @@ const Playlist = (props) => {
     setStep(step - 1);
   };
 
-  const mockPostPlaylistItem = () => {
+  const handleSubmit = () => {
     const newPlaylistItem = {
-      id: 3,
-      playlistId: id,
-      title: playlistItemTitle,
+      playlist_id: id,
+      name: playlistItemTitle,
       category,
       url: playlistItemURL,
-      isComplete: false,
+      is_complete: false,
     };
 
-    playlistContext.addPlaylistItem(newPlaylistItem);
+    playlistContext.postPlaylistItem(newPlaylistItem);
+    setPlaylistItemTitle('');
+    setPlaylistItemURL('');
+    setCategory('');
     prevStep();
   };
 
@@ -88,7 +90,7 @@ const Playlist = (props) => {
             nextStep={nextStep}
             playlistId={id}
             playlistItemURL={playlistItemURL}
-            playlistItems={playlistItems}
+            playlistItems={playlist_items}
             setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
           />
@@ -97,9 +99,9 @@ const Playlist = (props) => {
         return (
           <PlaylistView3
             category={category}
-            mockPostPlaylistItem={mockPostPlaylistItem}
+            handleSubmit={handleSubmit}
             prevStep={prevStep}
-            playlistItems={playlistItems}
+            playlistItems={playlist_items}
             playlistItemTitle={playlistItemTitle}
             playlistItemURL={playlistItemURL}
             setCategory={setCategory}
@@ -115,7 +117,7 @@ const Playlist = (props) => {
             nextStep={nextStep}
             playlistId={id}
             playlistItemURL={playlistItemURL}
-            playlistItems={playlistItems}
+            playlistItems={playlist_items}
             setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
           />

@@ -8,10 +8,10 @@ import Input from '../Input/Input';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
 const buttons = [
-  { label: 'Video', icon: <YouTubeIcon fontSize="large" /> },
-  { label: 'Audio', icon: <MicNoneOutlinedIcon fontSize="large" /> },
-  { label: 'Article', icon: <DescriptionOutlinedIcon fontSize="large" /> },
-  { label: 'Other', icon: <AirplayIcon fontSize="large" /> },
+  { label: 'video', icon: <YouTubeIcon fontSize="large" /> },
+  { label: 'audio', icon: <MicNoneOutlinedIcon fontSize="large" /> },
+  { label: 'article', icon: <DescriptionOutlinedIcon fontSize="large" /> },
+  { label: 'other', icon: <AirplayIcon fontSize="large" /> },
 ];
 
 const Button = styled.button.attrs(() => ({
@@ -55,7 +55,7 @@ const Span = styled.span`
 
 const PlaylistView3 = ({
   category,
-  mockPostPlaylistItem,
+  handleSubmit,
   prevStep,
   playlistItemTitle,
   playlistItemURL,
@@ -67,7 +67,7 @@ const PlaylistView3 = ({
 }) => (
   <>
     3
-    <PlaylistItem category={category} title={playlistItemTitle} />
+    <PlaylistItem category={category} name={playlistItemTitle} />
     <Input
       label="Playlist item title"
       onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
@@ -83,7 +83,7 @@ const PlaylistView3 = ({
         </Button>
       ))}
     </Grid>
-    <DoneButton onClick={() => mockPostPlaylistItem()}>Done</DoneButton>
+    <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
     <Span onClick={() => prevStep()}>Cancel</Span>
   </>
 );
