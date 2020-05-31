@@ -20,7 +20,7 @@ const mockContextNullId = {
         user_id: 1,
         status: 1,
         due_date: '07/04/2020',
-        playlistItems: [
+        playlist_items: [
           {
             id: 1,
             title: 'JavaScript Crash Course',
@@ -37,7 +37,7 @@ const mockContextNullId = {
         user_id: 1,
         status: 1,
         due_date: '08/14/2020',
-        playlistItems: [],
+        playlist_items: [],
       },
     ],
   },
@@ -87,8 +87,8 @@ test('it calls addPlaylist with correct arguments on click', () => {
     id: null,
     title: '',
     user_id: 1,
-    status: 1,
+    status: 'valid',
     due_date: '',
-    playlistItems: [],
+    playlist_items: [],
   });
 });

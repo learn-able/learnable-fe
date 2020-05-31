@@ -28,7 +28,6 @@ const Section = styled(motion.section)`
   transform-origin: center;
   width: 25rem;
 `;
-// TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
 
 const Playlist = (props) => {
   const playlistContext = useContext(PlaylistContext);
