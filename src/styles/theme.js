@@ -9,6 +9,8 @@ export default {
     grayDark: '#666',
     grayDarker: '#333',
     white: '#fff',
+    fontPrimary: '#2c3e50',
+    fontSecondary: '#34495e',
   },
   fontFamily: {
     primary: "'Roboto', sans-serif",
@@ -33,7 +35,18 @@ export default {
     xl: '10rem',
   },
   styles: {
-    boxShadow: '12px 18px 24px rgba(0, 0, 0, 0.2)',
+    boxShadow: `0 0.5px 1px rgba(0,0,0,0.03),
+                0 1px 2px rgba(0,0,0,0.03),
+                0 2px 4px rgba(0,0,0,0.03),
+                0 4px 8px rgba(0,0,0,0.03),
+                0 8px 16px rgba(0,0,0,0.03),
+                0 16px 32px rgba(0,0,0,0.03)`,
+    boxShadowLight: `0 0.5px 1px rgba(0,0,0,0.01),
+                0 1px 2px rgba(0,0,0,0.02),
+                0 2px 4px rgba(0,0,0,0.01),
+                0 4px 8px rgba(0,0,0,0.02),
+                0 8px 16px rgba(0,0,0,0.01),
+                0 16px 32px rgba(0,0,0,0.02)`,
     borderRadius: '0.6rem',
   },
 };

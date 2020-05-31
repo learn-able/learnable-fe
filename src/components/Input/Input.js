@@ -1,6 +1,16 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, FormControl, PlusIcon } from './InputStyles';
+
+const childVariants = {
+  active: {
+    scaleY: 1,
+  },
+  disabled: {
+    scaleY: 0,
+  },
+};
 
 const Input = ({
   id,
@@ -11,7 +21,9 @@ const Input = ({
   placeholder,
   value,
 }) => (
-  <FormControl>
+  <FormControl
+    variants={childVariants}
+  >
     <input
       aria-label={label}
       id={id || null}

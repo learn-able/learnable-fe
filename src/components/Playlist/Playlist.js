@@ -17,16 +17,21 @@ const childVariants = {
 };
 
 const Section = styled(motion.section)`
-  border: 1px solid ${({ theme }) => theme.colors.grayDarker};
+  border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
+  background-color: #fff;
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 0 ${({ theme }) => theme.spacers.xs};
-  min-height: min-content;
+  min-height: 25rem;
+  height: 80%;
   overflow: scroll;
   padding: ${({ theme }) => theme.spacers.xs};
   transform-origin: center;
-  width: 25rem;
+  min-width: 375px;
+  width: 30vw;
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
 `;
 // TODO When a Playlist item is submitted, within that function, we will need to set the value of playlistItem back to an empty string. Currently it is persisting.
 

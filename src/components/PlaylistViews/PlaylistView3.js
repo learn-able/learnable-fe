@@ -8,20 +8,21 @@ import Input from '../Input/Input';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
 const buttons = [
-  { label: 'video', icon: <YouTubeIcon fontSize="large" /> },
-  { label: 'audio', icon: <MicNoneOutlinedIcon fontSize="large" /> },
-  { label: 'article', icon: <DescriptionOutlinedIcon fontSize="large" /> },
-  { label: 'other', icon: <AirplayIcon fontSize="large" /> },
+  { label: 'video', icon: <YouTubeIcon fontSize="large" style={{fill: "#c4302b"}} /> },
+  { label: 'audio', icon: <MicNoneOutlinedIcon fontSize="large" style={{fill: "#8e44ad"}} /> },
+  { label: 'article', icon: <DescriptionOutlinedIcon fontSize="large" style={{fill: "#16a085"}} /> },
+  { label: 'other', icon: <AirplayIcon fontSize="large" style={{fill: '#2c3e50'}} /> },
 ];
 
 const Button = styled.button.attrs(() => ({
   type: 'button',
 }))`
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.white};
   border: none;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.fontPrimary};
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.sm};
@@ -32,10 +33,11 @@ const Button = styled.button.attrs(() => ({
 const DoneButton = styled.button.attrs(() => ({
   type: 'button',
 }))`
-  background: ${({ theme }) => theme.colors.secondary};
+  background: #3498db;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: 500;
+  cursor: pointer;
   height: 2.5rem;
   margin: 2.5rem 0 0.5rem 0;
   width: 100%;
@@ -49,8 +51,11 @@ const Grid = styled.div`
 `;
 
 const Span = styled.span`
-  color: red;
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
   text-align: center;
+  cursor: pointer;
 `;
 
 const PlaylistView3 = ({
@@ -66,7 +71,6 @@ const PlaylistView3 = ({
   title,
 }) => (
   <>
-    3
     <PlaylistItem category={category} name={playlistItemTitle} />
     <Input
       label="Playlist item title"
@@ -83,8 +87,10 @@ const PlaylistView3 = ({
         </Button>
       ))}
     </Grid>
-    <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
-    <Span onClick={() => prevStep()}>Cancel</Span>
+    <div style={{textAlign: "center"}}>
+      <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
+      <Span onClick={() => prevStep()}>Cancel</Span>
+    </div>
   </>
 );
 

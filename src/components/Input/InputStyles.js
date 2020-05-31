@@ -1,10 +1,12 @@
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
 
 export const Button = styled.button.attrs(() => ({
   type: 'button',
 }))`
-  background: ${({ theme }) => theme.colors.grayLight};
+  background: ${({ theme }) => theme.colors.grayLighter};
+  color: ${({ theme }) => theme.colors.fontPrimary};
   border: none;
   height: 3rem;
   width: 3rem;
@@ -18,7 +20,8 @@ export const Button = styled.button.attrs(() => ({
     outline: none;
 
     & > * {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.grayLighter};
+      background-color: ${({ theme }) => theme.colors.fontSecondary};
     }
   }
 
@@ -26,16 +29,18 @@ export const Button = styled.button.attrs(() => ({
     disabled &&
     css`
       && > * {
-        color: ${({ theme }) => theme.colors.gray};
+        color: ${({ theme }) => theme.colors.grayLight};
+        background-color: #f9f9f9;
         cursor: auto;
       }
     `}
 `;
 
-export const FormControl = styled.div`
+export const FormControl = styled(motion.div)`
   display: flex;
   margin: ${({ theme }) => theme.spacers.xs} 0;
   position: relative;
+  transform-origin: top;
   width: 100%;
 
   & label,
@@ -50,7 +55,7 @@ export const FormControl = styled.div`
   }
 
   & input {
-    border: 1px solid ${({ theme }) => theme.colors.gray};
+    border: 1px solid ${({ theme }) => theme.colors.grayLighter};
     font: inherit;
     height: 3rem;
     padding: 0.15rem 0.6rem;
@@ -58,7 +63,6 @@ export const FormControl = styled.div`
 
     &:focus {
       outline: none;
-      border-color: ${({ theme }) => theme.colors.grayDarker};
     }
   }
 
