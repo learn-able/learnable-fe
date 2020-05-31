@@ -39,13 +39,9 @@ const PlaylistItem = ({
   url,
 }) => {
   const playlistContext = useContext(PlaylistContext);
-  const mockToggleIsComplete = () => {
-    playlistContext.updatePlaylistItem({
-      id,
-      playlist_id,
-      name,
-      category,
-      url,
+
+  const handleCheckboxToggle = () => {
+    playlistContext.patchPlaylist(playlist_id, id, {
       is_complete: !is_complete,
     });
   };
@@ -54,7 +50,7 @@ const PlaylistItem = ({
     <Div>
       <Checkbox
         checked={is_complete}
-        onChange={() => mockToggleIsComplete()}
+        onChange={() => handleCheckboxToggle()}
         name="checkbox"
         color="primary"
       />

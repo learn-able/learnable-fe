@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
+import { sortPlaylistItems } from '../utils/utils';
 
 export const PlaylistContext = createContext();
 
@@ -13,7 +14,15 @@ const PlaylistProvider = ({ children }) => {
         const responseData = await sendRequest(
           `http://learnablebe.herokuapp.com/api/v0/user/1/playlists`
         );
-        setState({ playlists: responseData.data });
+
+        const formattedData = responseData.data.map((playlist) => {
+          if (playlist.playlist_items) {
+            sortPlaylistItems(playlist.playlist_items);
+          }
+          return playlist;
+        });
+
+        setState({ playlists: formattedData });
       } catch (error) {
         console.error(error);
       }
@@ -75,24 +84,23 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const updatePlaylistItem = (newPlaylistItem) => {
-    const { playlists } = state;
+  const patchPlaylist = async (playlistId, playlistItemId, checkboxState) => {
+    try {
+      const responseData = await sendRequest(
+        `http://learnablebe.herokuapp.com/api/v0/playlists/${playlistId}/items/${playlistItemId}`,
+        'PATCH',
+        JSON.stringify(checkboxState),
+        { 'Content-Type': 'application/json' }
+      );
 
-    const updatedPlaylists = playlists.map((playlist) => {
-      if (playlist.id === newPlaylistItem.playlistId) {
-        playlist.playlistItems = playlist.playlistItems.map((pi) => {
-          if (pi.id === newPlaylistItem.id) {
-            pi = newPlaylistItem;
-          }
-          return pi;
-        });
-      }
-      return playlist;
-    });
+      console.log();
 
-    setState({
-      playlists: updatedPlaylists,
-    });
+      sortPlaylistItems(responseData.data.playlist_items);
+
+      updatePlaylist(responseData.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const removePlaylist = () => {
@@ -106,9 +114,9 @@ const PlaylistProvider = ({ children }) => {
       value={{
         state,
         addPlaylist,
+        patchPlaylist,
         postPlaylist,
         postPlaylistItem,
-        updatePlaylistItem,
         removePlaylist,
       }}
     >
