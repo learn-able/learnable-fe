@@ -9,6 +9,7 @@ const Button = styled(motion.button)`
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   font-size: ${({ theme }) => theme.fontSizes.md};
   height: 10rem;
+  margin: 0 2.5rem;
   width: 25rem;
 
   &:hover {

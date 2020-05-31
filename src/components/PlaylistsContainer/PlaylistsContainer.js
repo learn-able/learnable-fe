@@ -22,8 +22,11 @@ const parentVariants = {
 const Main = styled(motion.main)`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  padding: ${({ theme }) => theme.spacers.md};
+  background-color: #F9F9F9;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 const PlaylistsContainer = () => {
