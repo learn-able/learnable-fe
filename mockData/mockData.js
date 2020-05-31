@@ -5,12 +5,12 @@ export const mockPlaylistData = [
     user_id: 1,
     status: 1,
     due_date: '07/04/2020',
-    playlistItems: [
+    playlist_items: [
       {
         id: 1,
         title: 'JavaScript Crash Course',
         url: '#',
-        isComplete: false,
+        is_complete: true,
         category: null,
         playlist_id: 1,
       },
@@ -22,12 +22,12 @@ export const mockPlaylistData = [
     user_id: 1,
     status: 1,
     due_date: '08/14/2020',
-    playlistItems: [
+    playlist_items: [
       {
         id: 2,
         title: 'Ruby Crash Course',
         url: '#',
-        isComplete: false,
+        is_complete: false,
         category: null,
         playlist_id: 2,
       },
