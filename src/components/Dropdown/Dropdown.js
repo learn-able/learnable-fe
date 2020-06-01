@@ -9,6 +9,7 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 const Div = styled.div`
   position: absolute;
   right: 0;
+  transform: rotate(90deg);
   top: 0;
 `;
 
