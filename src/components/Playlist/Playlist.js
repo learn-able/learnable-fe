@@ -25,7 +25,7 @@ const Section = styled(motion.section)`
   justify-content: space-between;
   margin: 0 ${({ theme }) => theme.spacers.xs};
   min-height: 25rem;
-  height: 80%;
+  height: 90%;
   overflow: scroll;
   padding: ${({ theme }) => theme.spacers.xs};
   transform-origin: center;
