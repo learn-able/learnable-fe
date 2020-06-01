@@ -2,6 +2,8 @@ import AppNav from '../../src/components/AppNav/AppNav'
 import Header from '../../src/components/Header/Header'
 import Head from 'next/head';
 import styled from 'styled-components';
+import NotificationsContainer from '../../src/components/NotificationsContainer/NotificationsContainer'
+import NotificationBadgesContainer from '../../src/components/NotificationBadgesContainer/NotificationBadgesContainer'
 import PlaylistProvider from '../../src/contexts/playlistContext';
 
 const MainWrapper = styled.div`
@@ -11,7 +13,7 @@ const MainWrapper = styled.div`
   width: 100vw;
 `;
 
-export default function notifications() {
+export default function Notifications() {
   return (
     <>
       <Head>
@@ -21,6 +23,8 @@ export default function notifications() {
       <Header />
         <MainWrapper>
           <AppNav />
+          <NotificationBadgesContainer />
+          <NotificationsContainer />
         </MainWrapper>
       </PlaylistProvider>
     </>

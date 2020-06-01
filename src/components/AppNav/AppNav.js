@@ -21,18 +21,19 @@ const Button = styled(motion.button)`
   margin: 0 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.fontPrimary};
+  background: #f9f9f9;
 `
 
 const buttons = [
-  {label: <AddIcon fontSize="large" />},
-  {label: <Link href="/app/Notifications"><NotificationsIcon fontSize="large" /></Link>},
-  {label: <ArchiveIcon fontSize="large" />},
+  {label: <AddIcon fontSize="large" />, title: "addIcon"},
+  {label: <Link href="/app/Notifications"><NotificationsIcon fontSize="large" /></Link>, title: "notifications"},
+  {label: <ArchiveIcon fontSize="large" />, title: "archive"},
 ]
 
 const AppNav = () => {
   return (
     <Nav >
-      {buttons.map(b => <Button key={b.label} whileHover={{ scale: 1.1 }} whileTap={{ scale: .95 }}>{b.label}</Button>)}
+      {buttons.map(b => <Button key={b.title} whileHover={{ scale: 1.1 }} whileTap={{ scale: .95 }}>{b.label}</Button>)}
     </Nav>
   )
 }

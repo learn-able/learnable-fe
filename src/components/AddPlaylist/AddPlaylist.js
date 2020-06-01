@@ -3,6 +3,10 @@ import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
+const Wrapper = styled.div`
+  padding: 0 1rem;
+`
+
 const Button = styled(motion.button)`
   background: transparent;
   border: 1px dashed ${({ theme }) => theme.colors.grayDark};
@@ -11,6 +15,7 @@ const Button = styled(motion.button)`
   height: 10rem;
   margin: 2.5rem;
   width: 25rem;
+  min-width: 25rem;
 
   &:hover {
     cursor: pointer;
@@ -38,7 +43,7 @@ const AddPlaylist = () => {
   }
 
   return (
-    <>
+    <Wrapper>
       <Button
         type="button"
         onClick={() =>
@@ -59,7 +64,7 @@ const AddPlaylist = () => {
       >
         Add Playlist
       </Button>
-    </>
+    </Wrapper>
   );
 };
 
