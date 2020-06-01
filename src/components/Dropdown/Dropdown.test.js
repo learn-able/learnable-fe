@@ -74,7 +74,7 @@ test('it invokes archive when archive menuitem clicked', async () => {
   expect(mockPatchPlaylist).toHaveBeenCalledWith(1, { status: 'archived' });
 });
 
-test.skip('it invokes delete when delete menuitem clicked', async () => {
+test('it invokes delete when delete menuitem clicked', async () => {
   renderDropdown(mockProps, {
     deletePlaylist: mockDeletePlaylist,
   });

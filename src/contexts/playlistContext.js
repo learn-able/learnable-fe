@@ -94,8 +94,6 @@ const PlaylistProvider = ({ children }) => {
         { 'Content-Type': 'application/json' }
       );
 
-      console.log(responseData);
-
       updatePlaylist(responseData.data);
     } catch (error) {
       console.error(error);

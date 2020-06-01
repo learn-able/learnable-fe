@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import AccountCreatedBadge from '../NotificationBadges/AccountCreated'
-import { PlaylistContext } from '../../contexts/playlistContext'
-import { useContext } from 'react'
-import moment from 'moment'
+import styled from 'styled-components';
+import { useContext } from 'react';
+import moment from 'moment';
+import AccountCreatedBadge from '../NotificationBadges/AccountCreated';
+import { PlaylistContext } from '../../contexts/playlistContext';
 
 const Wrapper = styled.div`
   background: #f9f9f9;
@@ -15,12 +15,10 @@ const Wrapper = styled.div`
   box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
   align-self: center;
   overflow-y: scroll;
-`
+`;
 
 const NotificationBadgesContainer = () => {
   const playlistContext = useContext(PlaylistContext);
-  console.log(playlistContext.state.playlists);
-  console.log(moment().format('MM/DD/YYYY'));
   return (
     <Wrapper>
       <AccountCreatedBadge />
@@ -38,7 +36,7 @@ const NotificationBadgesContainer = () => {
       <AccountCreatedBadge />
       <AccountCreatedBadge />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default NotificationBadgesContainer
+export default NotificationBadgesContainer;

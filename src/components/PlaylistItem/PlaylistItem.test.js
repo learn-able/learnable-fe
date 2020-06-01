@@ -57,5 +57,10 @@ test('it invokes onClick event when checkbox toggled', async () => {
   expect(mockPatchPlaylist).toHaveBeenCalledTimes(1);
   expect(mockPatchPlaylist).toHaveBeenCalledWith(props.playlist_id, props.id, {
     is_complete: !props.is_complete,
+    category: 'video',
+    name: 'JavaScript video',
+    playlist_id: 1,
+    url: 'http://www.test.com',
+    is_favorite: false,
   });
 });
