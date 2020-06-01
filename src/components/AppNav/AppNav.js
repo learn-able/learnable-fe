@@ -49,31 +49,26 @@ const Button = styled(motion.button)`
   background: #f9f9f9;
 `;
 
-const buttons = [
-  {
-    label: <AddIcon fontSize="large" />,
-    title: 'Add new playlist',
-  },
-  {
-    label: <ViewHeadlineIcon fontSize="large" />,
-    title: 'Toggle views',
-  },
-  {
-    label: <ArchiveIcon fontSize="large" />,
-    title: 'Show archived',
-  },
-];
-
-const AppNav = () => (
+const AppNav = ({ switchView, view }) => (
   <Nav>
-    {buttons.map((b) => (
-      <Wrapper key={b.title}>
-        <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          {b.label}
-        </Button>
-        <P>{b.title}</P>
-      </Wrapper>
-    ))}
+    <Wrapper>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+        <AddIcon fontSize="large" />
+      </Button>
+      <P>Add new playlist</P>
+    </Wrapper>
+    <Wrapper>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView(!view)}>
+        <ViewHeadlineIcon fontSize="large" />
+      </Button>
+      <P>Toggle views</P>
+    </Wrapper>
+    <Wrapper>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+        <ArchiveIcon fontSize="large" />
+      </Button>
+      <P>Show archived</P>
+    </Wrapper>
   </Nav>
 );
 

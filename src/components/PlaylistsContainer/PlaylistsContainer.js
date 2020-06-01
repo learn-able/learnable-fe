@@ -30,7 +30,7 @@ const Main = styled(motion.main)`
   color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
-const PlaylistsContainer = () => {
+const PlaylistsContainer = ({ view }) => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
   const renderedPlaylists = playlists.map((playlist) => (
@@ -44,6 +44,7 @@ const PlaylistsContainer = () => {
       animate={playlists.length ? 'active' : 'disabled'}
     >
       {renderedPlaylists}
+      {console.log(view)}
       <AddPlaylist />
     </Main>
   );
