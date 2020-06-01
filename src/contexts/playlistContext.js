@@ -8,26 +8,26 @@ const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
 
+  const fetchPlaylists = async () => {
+    try {
+      const responseData = await sendRequest(
+        `https://learnablebe.herokuapp.com/api/v0/user/1/playlists`
+      );
+
+      const formattedData = responseData.data.map((playlist) => {
+        if (playlist.playlist_items) {
+          sortPlaylistItems(playlist.playlist_items);
+        }
+        return playlist;
+      });
+
+      setState({ playlists: formattedData });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const fetchPlaylists = async () => {
-      try {
-        const responseData = await sendRequest(
-          `https://learnablebe.herokuapp.com/api/v0/user/1/playlists`
-        );
-
-        const formattedData = responseData.data.map((playlist) => {
-          if (playlist.playlist_items) {
-            sortPlaylistItems(playlist.playlist_items);
-          }
-          return playlist;
-        });
-
-        setState({ playlists: formattedData });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchPlaylists();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sendRequest]);
@@ -84,16 +84,34 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const patchPlaylist = async (playlistId, playlistItemId, checkboxState) => {
+  const patchPlaylist = async (playlistId, updateParam) => {
+    const userId = 1;
+    try {
+      const responseData = await sendRequest(
+        `https://learnablebe.herokuapp.com/api/v0/user/${userId}/playlists/${playlistId}`,
+        'PATCH',
+        JSON.stringify(updateParam),
+        { 'Content-Type': 'application/json' }
+      );
+
+      updatePlaylist(responseData.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const patchPlaylistItem = async (
+    playlistId,
+    playlistItemId,
+    playlistItemState
+  ) => {
     try {
       const responseData = await sendRequest(
         `https://learnablebe.herokuapp.com/api/v0/playlists/${playlistId}/items/${playlistItemId}`,
         'PATCH',
-        JSON.stringify(checkboxState),
+        JSON.stringify(playlistItemState),
         { 'Content-Type': 'application/json' }
       );
-
-      console.log();
 
       sortPlaylistItems(responseData.data.playlist_items);
 
@@ -109,12 +127,30 @@ const PlaylistProvider = ({ children }) => {
     });
   };
 
+  const deletePlaylist = async (playlistId) => {
+    try {
+      const responseData = await sendRequest(
+        `https://learnablebe.herokuapp.com/api/v0/playlists/${playlistId}`,
+        'DELETE',
+        { 'Content-Type': 'application/json' }
+      );
+
+      if (responseData.status === 200) {
+        fetchPlaylists();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <PlaylistContext.Provider
       value={{
         state,
         addPlaylist,
+        deletePlaylist,
         patchPlaylist,
+        patchPlaylistItem,
         postPlaylist,
         postPlaylistItem,
         removePlaylist,

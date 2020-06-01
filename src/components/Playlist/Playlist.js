@@ -28,6 +28,7 @@ const Section = styled(motion.section)`
   height: 90%;
   overflow: scroll;
   padding: ${({ theme }) => theme.spacers.xs};
+  position: relative;
   transform-origin: center;
   min-width: 375px;
   width: 30vw;
