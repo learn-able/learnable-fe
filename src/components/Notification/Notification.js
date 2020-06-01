@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const Div = styled.div`
+const Div = styled(motion.div)`
   align-items: center;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   display: flex;
@@ -23,7 +24,7 @@ const Notification = ({
 }) => {
 
   return (
-    <Div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
+    <Div whileHover={{ scale: 1.02 }}>
       <P>Notification</P>
     </Div>
   );

@@ -6,9 +6,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background: #f9f9f9;
-  flex-grow: 1;
+  height: 45rem;
   overflow: scroll;
-  padding: 2rem 0;
+  margin: 2rem 0;
 `
 
 const NotificationsContainer = () => (
