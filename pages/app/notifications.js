@@ -11,6 +11,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
   background: #f9f9f9;
   width: 100vw;
+  padding-top: 2.5rem;
 `;
 
 export default function Notifications() {
@@ -22,7 +23,6 @@ export default function Notifications() {
       <PlaylistProvider>
       <Header />
         <MainWrapper>
-          <AppNav />
           <NotificationBadgesContainer />
           <NotificationsContainer />
         </MainWrapper>

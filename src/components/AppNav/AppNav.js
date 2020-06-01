@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
 import ArchiveIcon from '@material-ui/icons/Archive';
 
 const Nav = styled.nav`
@@ -27,11 +27,7 @@ const Button = styled(motion.button)`
 const buttons = [
   { label: <AddIcon fontSize="large" />, title: 'addIcon' },
   {
-    label: (
-      <Link href="/app/notifications">
-        <NotificationsIcon fontSize="large" />
-      </Link>
-    ),
+    label: <ViewHeadlineIcon fontSize="large" />,
     title: 'notifications',
   },
   { label: <ArchiveIcon fontSize="large" />, title: 'archive' },
