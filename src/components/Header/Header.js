@@ -15,9 +15,11 @@ const Button = styled.button`
   font-size: 1rem;
   padding: 0 1rem;
   height: 2rem;
+  border: none;
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
-  border: solid 0.5px ${({ theme }) => theme.colors.fontPrimary};
-  color: ${({ theme }) => theme.colors.fontPrimary};
+  color: white;
+  background: #9b59b6;
   cursor: pointer;
   margin: 0 0 0 0.5rem;
 `
@@ -37,7 +39,7 @@ const Nav = styled.nav`
   height: 4rem;
   width: 100vw;
   display: flex;
-  background: #f9f9f9;
+  background: #ecf0f1;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3.5rem;
@@ -50,10 +52,14 @@ const Header = () => {
         <Link href="/"><H1>learnable</H1></Link>
         <Div>
         <Ul>
-          <li>about</li>
-          <li>pricing</li>
+          <Link href="/">
+            <li>home</li>
+          </Link>
+          <Link href="/app/notifications">
+            <li>notifications</li>
+          </Link>
         </Ul>
-        <Button>log out</Button>
+        <Button>Welcome, Ryan!</Button>
         </Div>
       </Nav>
   )
