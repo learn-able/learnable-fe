@@ -22,8 +22,7 @@ const parentVariants = {
 const Main = styled(motion.main)`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  padding: 0 0 0 2.5rem;
   flex-grow: 1;
   background-color: #F9F9F9;
   color: ${({ theme }) => theme.colors.fontPrimary};
