@@ -12,6 +12,30 @@ const Nav = styled.nav`
   padding: 1rem 2.5rem;
 `;
 
+const P = styled.p`
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  position: absolute;
+  color: ${({ theme }) => theme.colors.grayDark};
+  font-size: 0.85rem;
+  padding-top: 1rem;
+`
+
+const Wrapper = styled.div`
+  width: min-content;
+  position: relative;
+  p {
+    display: none;
+  }
+
+  &:hover {
+    & > * {
+      display: block;
+    }
+  }
+`
+
 const Button = styled(motion.button)`
   border-radius: 50%;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
@@ -25,25 +49,28 @@ const Button = styled(motion.button)`
 `;
 
 const buttons = [
-  { label: <AddIcon fontSize="large" />, title: 'addIcon' },
+  { label: <AddIcon fontSize="large" />, title: 'Add new playlist' },
   {
     label: <ViewHeadlineIcon fontSize="large" />,
-    title: 'notifications',
+    title: 'Toggle views',
   },
-  { label: <ArchiveIcon fontSize="large" />, title: 'archive' },
+  { label: <ArchiveIcon fontSize="large" />, title: 'Show archived' },
 ];
 
 const AppNav = () => (
   <Nav>
-    {buttons.map((b) => (
-      <Button
-        key={b.title}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {b.label}
-      </Button>
-    ))}
+      {buttons.map((b) => (
+        <Wrapper>
+        <Button
+          key={b.title}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {b.label}
+        </Button>
+        <P>{b.title}</P>
+        </Wrapper>
+      ))}
   </Nav>
 );
 

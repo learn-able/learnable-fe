@@ -16,7 +16,7 @@ const Button = styled.button`
   padding: 0 1rem;
   height: 2rem;
   border: none;
-  box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   color: white;
   background: #9b59b6;
