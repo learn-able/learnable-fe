@@ -1,13 +1,13 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const calculatePercentComplete = (arr) => {
   if (arr.length) {
-    const completedItems = arr.filter(item => item.is_complete === true);
-    return (completedItems.length / arr.length * 100).toFixed();
-  } else {
-    return 0;
+    const completedItems = arr.filter((item) => item.is_complete === true);
+    return ((completedItems.length / arr.length) * 100).toFixed();
   }
-}
+  return 0;
+};
 
 const Div = styled.div`
   display: flex;
@@ -28,5 +28,14 @@ const PlaylistTitle = ({ title, playlistItems }) => (
     <Span>{title}</Span>
   </Div>
 );
+
+PlaylistTitle.defaultProps = {
+  playlistItems: [],
+};
+
+PlaylistTitle.propTypes = {
+  title: PropTypes.string,
+  playlistItems: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default PlaylistTitle;

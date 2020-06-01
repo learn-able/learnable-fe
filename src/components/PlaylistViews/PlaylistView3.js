@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
@@ -8,10 +9,24 @@ import Input from '../Input/Input';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
 const buttons = [
-  { label: 'video', icon: <YouTubeIcon fontSize="large" style={{fill: "#c4302b"}} /> },
-  { label: 'audio', icon: <MicNoneOutlinedIcon fontSize="large" style={{fill: "#8e44ad"}} /> },
-  { label: 'article', icon: <DescriptionOutlinedIcon fontSize="large" style={{fill: "#16a085"}} /> },
-  { label: 'other', icon: <AirplayIcon fontSize="large" style={{fill: '#2c3e50'}} /> },
+  {
+    label: 'video',
+    icon: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b' }} />,
+  },
+  {
+    label: 'audio',
+    icon: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad' }} />,
+  },
+  {
+    label: 'article',
+    icon: (
+      <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085' }} />
+    ),
+  },
+  {
+    label: 'other',
+    icon: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
+  },
 ];
 
 const Button = styled.button.attrs(() => ({
@@ -63,12 +78,8 @@ const PlaylistView3 = ({
   handleSubmit,
   prevStep,
   playlistItemTitle,
-  playlistItemURL,
-  playlistItems,
   setCategory,
-  setPlaylistItemURL,
   setPlaylistItemTitle,
-  title,
 }) => (
   <>
     <PlaylistItem category={category} name={playlistItemTitle} />
@@ -87,11 +98,20 @@ const PlaylistView3 = ({
         </Button>
       ))}
     </Grid>
-    <div style={{textAlign: "center"}}>
+    <div style={{ textAlign: 'center' }}>
       <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
       <Span onClick={() => prevStep()}>Cancel</Span>
     </div>
   </>
 );
+
+PlaylistView3.propTypes = {
+  category: PropTypes.string,
+  handleSubmit: PropTypes.func.isRequired,
+  prevStep: PropTypes.func.isRequired,
+  playlistItemTitle: PropTypes.string,
+  setCategory: PropTypes.func.isRequired,
+  setPlaylistItemTitle: PropTypes.func.isRequired,
+};
 
 export default PlaylistView3;

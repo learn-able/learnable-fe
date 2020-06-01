@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
@@ -87,6 +88,13 @@ const PlaylistView1 = ({
       )}
     </Div>
   );
+};
+
+PlaylistView1.propTypes = {
+  onChangeHandler: PropTypes.func.isRequired,
+  playlistDate: PropTypes.string.isRequired,
+  setPlaylistDate: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default PlaylistView1;
