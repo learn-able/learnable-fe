@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
+import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
 
 const parentVariants = {
   active: {
@@ -33,19 +34,25 @@ const Main = styled(motion.main)`
 const PlaylistsContainer = ({ view }) => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
+
   const renderedPlaylists = playlists.map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
   ));
+
+  const renderedPlaylistsSmall = playlists.map((playlist) => (
+    <PlaylistViewSmall key={playlist.id} {...playlist} />
+  ));
+
 
   return (
     <Main
       variants={parentVariants}
       initial="disabled"
       animate={playlists.length ? 'active' : 'disabled'}
+      style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
     >
-      {renderedPlaylists}
-      {console.log(view)}
-      <AddPlaylist />
+      {view === true ? renderedPlaylists : renderedPlaylistsSmall}
+      {view === true ? <AddPlaylist /> : null}
     </Main>
   );
 };
