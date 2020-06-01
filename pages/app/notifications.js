@@ -9,6 +9,7 @@ import PlaylistProvider from '../../src/contexts/playlistContext';
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  background: #f9f9f9;
   height: calc(100vh - 4rem);
   width: 100vw;
 `;

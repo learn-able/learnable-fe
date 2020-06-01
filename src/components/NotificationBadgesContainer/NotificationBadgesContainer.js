@@ -1,12 +1,33 @@
 import styled from 'styled-components'
+import TestBadge from '../NotificationBadges/TestBadge'
 
-const Div = styled.div`
+const Wrapper = styled.div`
   background: #f9f9f9;
-  flex-grow: 1;
+  width: 65vw;
+  padding-top: 2.5rem;
+  height: 40rem;
+  align-self: center;
+  display: flex;
+  overflow-y: scroll;
 `
 
 const NotificationBadgesContainer = () => (
-  <Div>test1</Div>
+  <Wrapper>
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+    <TestBadge />
+  </Wrapper>
 )
 
 export default NotificationBadgesContainer
