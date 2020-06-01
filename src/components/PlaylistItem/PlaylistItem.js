@@ -46,7 +46,12 @@ const PlaylistItem = ({
 
   const handleCheckboxToggle = () => {
     playlistContext.patchPlaylistItem(playlist_id, id, {
+      playlist_id,
+      name,
+      category,
       is_complete: !is_complete,
+      url,
+      is_favorite: false,
     });
   };
 
