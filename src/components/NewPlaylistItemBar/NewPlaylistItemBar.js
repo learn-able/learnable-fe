@@ -58,7 +58,17 @@ const NewPlaylistItemBar = ({
   setPlaylistItemURL,
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
+
+  const formatUrl = (url) => {
+    if (!url.includes('//')) {
+      url = `//${url}`;
+    }
+
+    setPlaylistItemURL(url);
+  };
+
   const onItemSubmit = () => {
+    formatUrl(playlistItemURL);
     nextStep();
     toggleInputActive(false);
   };

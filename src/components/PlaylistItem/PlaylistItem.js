@@ -8,14 +8,18 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Checkbox from '@material-ui/core/Checkbox';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Div = styled(motion.div)`
+const A = styled(motion.a).attrs({
+  target: '_blank',
+})`
   align-items: center;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
+  border-radius: ${({ theme }) => theme.styles.borderRadius};
+  box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+  color: ${({ theme }) => theme.colors.fontPrimary};
   display: flex;
   margin: 0.5rem 0;
   min-height: ${({ theme }) => theme.spacers.md};
-  border-radius: ${({ theme }) => theme.styles.borderRadius};
-  box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+  text-decoration: none;
 `;
 
 const P = styled.p`
@@ -56,7 +60,7 @@ const PlaylistItem = ({
   };
 
   return (
-    <Div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
+    <A href={url} whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
       <Checkbox
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
@@ -65,7 +69,7 @@ const PlaylistItem = ({
       />
       <P>{name}</P>
       {icon[category]}
-    </Div>
+    </A>
   );
 };
 
