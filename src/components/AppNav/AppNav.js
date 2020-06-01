@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import AddIcon from '@material-ui/icons/Add'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import ArchiveIcon from '@material-ui/icons/Archive';
+import ArchiveIcon from '@material-ui/icons/Archive'
 
 const Nav = styled.nav`
   display: flex;
@@ -20,18 +21,19 @@ const Button = styled(motion.button)`
   margin: 0 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.fontPrimary};
+  background: #f9f9f9;
 `
 
 const buttons = [
-  {label: <AddIcon fontSize="large" />},
-  {label: <NotificationsIcon fontSize="large" />},
-  {label: <ArchiveIcon fontSize="large" />},
+  {label: <AddIcon fontSize="large" />, title: "addIcon"},
+  {label: <Link href="/app/Notifications"><NotificationsIcon fontSize="large" /></Link>, title: "notifications"},
+  {label: <ArchiveIcon fontSize="large" />, title: "archive"},
 ]
 
 const AppNav = () => {
   return (
     <Nav >
-      {buttons.map(b => <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: .95 }}>{b.label}</Button>)}
+      {buttons.map(b => <Button key={b.title} whileHover={{ scale: 1.1 }} whileTap={{ scale: .95 }}>{b.label}</Button>)}
     </Nav>
   )
 }
