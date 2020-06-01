@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
@@ -20,19 +21,27 @@ const Button = styled(motion.button)`
   margin: 0 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.fontPrimary};
+  background: #f9f9f9;
 `;
 
 const buttons = [
-  { label: <AddIcon fontSize="large" />, key: 'add' },
-  { label: <NotificationsIcon fontSize="large" />, key: 'notification' },
-  { label: <ArchiveIcon fontSize="large" />, key: 'archive' },
+  { label: <AddIcon fontSize="large" />, title: 'addIcon' },
+  {
+    label: (
+      <Link href="/app/notifications">
+        <NotificationsIcon fontSize="large" />
+      </Link>
+    ),
+    title: 'notifications',
+  },
+  { label: <ArchiveIcon fontSize="large" />, title: 'archive' },
 ];
 
 const AppNav = () => (
   <Nav>
     {buttons.map((b) => (
       <Button
-        key={b.key}
+        key={b.title}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >

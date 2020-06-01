@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import styled from 'styled-components';
 
 const H1 = styled.h1`
+  cursor: pointer;
   font-weight: 200;
 `
 
@@ -45,7 +47,7 @@ const Nav = styled.nav`
 const Header = () => {
   return (
       <Nav>
-        <H1>learnable</H1>
+        <Link href="/"><H1>learnable</H1></Link>
         <Div>
         <Ul>
           <li>about</li>

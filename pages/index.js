@@ -9,7 +9,6 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 4rem);
-  width: 100vw;
 `;
 
 export default function Home() {
