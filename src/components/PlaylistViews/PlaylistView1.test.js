@@ -37,7 +37,12 @@ const mockOnChangeHandler = jest.fn();
 const mockPostPlaylist = jest.fn();
 
 test('it renders the correct content', () => {
-  renderPlaylistView1({ title: 'mock title' });
+  renderPlaylistView1({
+    title: 'mock title',
+    onChangeHandler: mockOnChangeHandler,
+    playlistDate: '12/31/2020',
+    setPlaylistDate: jest.fn(),
+  });
   expect(
     screen.getByPlaceholderText('first, name your list:')
   ).toBeInTheDocument();
@@ -48,6 +53,8 @@ test('input button defaults to disabled when title value empty string', () => {
   renderPlaylistView1({
     title: '',
     onChangeHandler: mockOnChangeHandler,
+    playlistDate: '',
+    setPlaylistDate: jest.fn(),
   });
 
   const button = screen.getByLabelText('Submit input');
@@ -64,6 +71,7 @@ test('input button onclick renders datepicker and removes original button for sa
     title: 'mock title',
     onChangeHandler: mockOnChangeHandler,
     playlistDate: '12/31/2020',
+    setPlaylistDate: jest.fn(),
   };
 
   renderPlaylistView1(props, {

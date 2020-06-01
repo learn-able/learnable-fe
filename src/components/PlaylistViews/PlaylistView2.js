@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import ProgressBar from '../ProgressBar/ProgressBar';
@@ -41,6 +42,16 @@ const PlaylistView2 = ({
       </Div>
     </>
   );
+};
+
+PlaylistView2.propTypes = {
+  dueDate: PropTypes.string,
+  nextStep: PropTypes.func,
+  playlistId: PropTypes.number,
+  playlistItems: PropTypes.arrayOf(PropTypes.object),
+  playlistItemURL: PropTypes.string,
+  setPlaylistItemURL: PropTypes.func,
+  title: PropTypes.string,
 };
 
 export default PlaylistView2;
