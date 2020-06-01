@@ -49,7 +49,7 @@ test('it renders the correct content', () => {
 
 test('it invokes onClick event when checkbox toggled', async () => {
   const { getByRole } = renderPlaylistItem(props, {
-    patchPlaylist: mockPatchPlaylist,
+    patchPlaylistItem: mockPatchPlaylist,
   });
   const cb = getByRole('checkbox');
 

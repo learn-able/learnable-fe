@@ -45,7 +45,7 @@ const PlaylistItem = ({
   const playlistContext = useContext(PlaylistContext);
 
   const handleCheckboxToggle = () => {
-    playlistContext.patchPlaylist(playlist_id, id, {
+    playlistContext.patchPlaylistItem(playlist_id, id, {
       is_complete: !is_complete,
     });
   };

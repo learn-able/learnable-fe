@@ -5,6 +5,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import DueDate from '../DueDate/DueDate';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
+import Dropdown from '../Dropdown/Dropdown';
 
 const Div = styled.div`
   flex-grow: 1;
@@ -28,6 +29,7 @@ const PlaylistView2 = ({
 
   return (
     <>
+      <Dropdown playlistId={playlistId} />
       <PlaylistTitle title={title} playlistItems={playlistItems} />
       <DueDate dueDate={dueDate} />
       <ProgressBar playlistItems={playlistItems} />
