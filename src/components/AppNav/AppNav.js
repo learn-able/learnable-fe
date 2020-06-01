@@ -20,11 +20,12 @@ const P = styled.p`
   color: ${({ theme }) => theme.colors.grayDark};
   font-size: 0.85rem;
   padding-top: 1rem;
-`
+`;
 
 const Wrapper = styled.div`
   width: min-content;
   position: relative;
+
   p {
     display: none;
   }
@@ -34,7 +35,7 @@ const Wrapper = styled.div`
       display: block;
     }
   }
-`
+`;
 
 const Button = styled(motion.button)`
   border-radius: 50%;
@@ -49,28 +50,30 @@ const Button = styled(motion.button)`
 `;
 
 const buttons = [
-  { label: <AddIcon fontSize="large" />, title: 'Add new playlist' },
+  {
+    label: <AddIcon fontSize="large" />,
+    title: 'Add new playlist',
+  },
   {
     label: <ViewHeadlineIcon fontSize="large" />,
     title: 'Toggle views',
   },
-  { label: <ArchiveIcon fontSize="large" />, title: 'Show archived' },
+  {
+    label: <ArchiveIcon fontSize="large" />,
+    title: 'Show archived',
+  },
 ];
 
 const AppNav = () => (
   <Nav>
-      {buttons.map((b) => (
-        <Wrapper>
-        <Button
-          key={b.title}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
+    {buttons.map((b) => (
+      <Wrapper key={b.title}>
+        <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
           {b.label}
         </Button>
         <P>{b.title}</P>
-        </Wrapper>
-      ))}
+      </Wrapper>
+    ))}
   </Nav>
 );
 
