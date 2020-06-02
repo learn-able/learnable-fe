@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -35,9 +36,8 @@ const Section = styled(motion.section)`
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
 `;
 
-const Playlist = (props) => {
+const Playlist = ({ id, due_date, playlist_items, title }) => {
   const playlistContext = useContext(PlaylistContext);
-  const { id, due_date, playlist_items, status, title } = props;
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
@@ -137,11 +137,22 @@ const Playlist = (props) => {
   );
 };
 
-export default Playlist;
+Playlist.propTypes = {
+  id: PropTypes.number,
+  due_date: PropTypes.string,
+  playlist_items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      playlist_id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      url: PropTypes.string,
+      is_complete: PropTypes.bool,
+      created_at: PropTypes.string,
+      Updated_at: PropTypes.string,
+    })
+  ),
+  title: PropTypes.string,
+};
 
-// {
-//   step > 1 && <button onClick={prevStep}>-</button>;
-// }
-// {
-//   step < 4 && <button onClick={nextStep}>+</button>;
-// }
+export default Playlist;

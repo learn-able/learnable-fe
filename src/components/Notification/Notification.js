@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import styled from 'styled-components'
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Div = styled(motion.div)`
   align-items: center;
@@ -19,15 +20,14 @@ const P = styled.p`
   max-width: 75%;
 `;
 
-const Notification = ({
-  name,
-}) => {
+const Notification = ({ name }) => (
+  <Div whileHover={{ scale: 1.02 }}>
+    <P>Notification</P>
+  </Div>
+);
 
-  return (
-    <Div whileHover={{ scale: 1.02 }}>
-      <P>Notification</P>
-    </Div>
-  );
+Notification.propTypes = {
+  name: PropTypes.string,
 };
 
 export default Notification;

@@ -38,7 +38,7 @@ const mockPatchPlaylist = jest.fn();
 const mockDeletePlaylist = jest.fn();
 
 test('it renders a dropdown button unhides a menu when clicked', async () => {
-  renderDropdown();
+  renderDropdown(mockProps);
   const button = screen.getByLabelText('more');
 
   expect(button).toBeInTheDocument();

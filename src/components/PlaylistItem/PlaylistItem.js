@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -71,6 +72,15 @@ const PlaylistItem = ({
       {icon[category]}
     </A>
   );
+};
+
+PlaylistItem.propTypes = {
+  category: PropTypes.string,
+  id: PropTypes.number,
+  is_complete: PropTypes.bool,
+  name: PropTypes.string,
+  playlist_id: PropTypes.number,
+  url: PropTypes.string,
 };
 
 export default PlaylistItem;
