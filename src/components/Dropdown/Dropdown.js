@@ -8,13 +8,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Router from 'next/router'
 
-const Div = styled.div`
-  position: absolute;
-  right: 0;
-  transform: rotate(90deg);
-  top: 0;
-`;
-
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
@@ -75,6 +68,13 @@ export default function Dropdown({ playlistId }) {
     </Div>
   );
 }
+
+const Div = styled.div`
+  position: absolute;
+  right: 0;
+  transform: rotate(90deg);
+  top: 0;
+`;
 
 Dropdown.propTypes = {
   playlistId: PropTypes.number.isRequired,

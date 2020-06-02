@@ -7,38 +7,6 @@ import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
 
-const parentVariants = {
-  active: {
-    transition: {
-      delay: 1,
-      staggerChildren: 0.05,
-    },
-  },
-  disabled: {
-    transition: {
-      delay: 1,
-    },
-  },
-};
-
-const Main = styled(motion.main)`
-  display: flex;
-  flex-direction: row;
-  padding: 0.5rem 2.5rem 0 2.5rem;
-  flex-grow: 1;
-  width: 100vw;
-  overflow: scroll;
-  background-color: #F9F9F9;
-  color: ${({ theme }) => theme.colors.fontPrimary};
-
-  ${({ view }) =>
-    !view &&
-    css`
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    `}
-`;
-
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { view } = appSettingsContext.state;
@@ -72,6 +40,38 @@ const PlaylistsContainer = () => {
       {view === true ? <AddPlaylist /> : null}
     </Main>
   );
+};
+
+const Main = styled(motion.main)`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 2.5rem 0 2.5rem;
+  flex-grow: 1;
+  width: 100vw;
+  overflow: scroll;
+  background-color: #F9F9F9;
+  color: ${({ theme }) => theme.colors.fontPrimary};
+
+  ${({ view }) =>
+    !view &&
+    css`
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    `}
+`;
+
+const parentVariants = {
+  active: {
+    transition: {
+      delay: 1,
+      staggerChildren: 0.05,
+    },
+  },
+  disabled: {
+    transition: {
+      delay: 1,
+    },
+  },
 };
 
 export default PlaylistsContainer;

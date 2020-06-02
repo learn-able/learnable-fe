@@ -8,34 +8,6 @@ import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
 
-const childVariants = {
-  active: {
-    opacity: 1,
-  },
-  disabled: {
-    opacity: 0,
-  },
-};
-
-const Section = styled(motion.section)`
-  border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
-  background-color: #fff;
-  border-radius: ${({ theme }) => theme.styles.borderRadius};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 ${({ theme }) => theme.spacers.xs};
-  min-height: 25rem;
-  height: 90%;
-  overflow: scroll;
-  padding: ${({ theme }) => theme.spacers.xs};
-  position: relative;
-  transform-origin: center;
-  min-width: 375px;
-  width: 30vw;
-  box-shadow: ${({ theme }) => theme.styles.boxShadow};
-`;
-
 const Playlist = ({ id, due_date, playlist_items, status, title }) => {
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
@@ -135,6 +107,34 @@ const Playlist = ({ id, due_date, playlist_items, status, title }) => {
       {switchViews(step)}
     </Section>
   );
+};
+
+const Section = styled(motion.section)`
+  border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
+  background-color: #fff;
+  border-radius: ${({ theme }) => theme.styles.borderRadius};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 ${({ theme }) => theme.spacers.xs};
+  min-height: 25rem;
+  height: 90%;
+  overflow: scroll;
+  padding: ${({ theme }) => theme.spacers.xs};
+  position: relative;
+  transform-origin: center;
+  min-width: 375px;
+  width: 30vw;
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
+`;
+
+const childVariants = {
+  active: {
+    opacity: 1,
+  },
+  disabled: {
+    opacity: 0,
+  },
 };
 
 Playlist.propTypes = {
