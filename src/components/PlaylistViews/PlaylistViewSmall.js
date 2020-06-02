@@ -21,7 +21,7 @@ const Div = styled(motion.div)`
   border: solid 1px ${({ theme }) => theme.colors.grayLight};
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
   height: 15rem;
-  margin: 2.5rem;
+  margin: 1.2rem;
   padding: 2.5rem;
   position: relative;
   border-radius: ${({ theme }) => theme.styles.borderRadius};
