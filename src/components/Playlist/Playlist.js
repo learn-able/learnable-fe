@@ -138,10 +138,3 @@ const Playlist = (props) => {
 };
 
 export default Playlist;
-
-// {
-//   step > 1 && <button onClick={prevStep}>-</button>;
-// }
-// {
-//   step < 4 && <button onClick={nextStep}>+</button>;
-// }
