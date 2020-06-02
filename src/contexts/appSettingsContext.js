@@ -5,10 +5,15 @@ export const AppSettingsContext = createContext();
 export default class AppSettingsProvider extends React.Component {
   state = {
     view: true,
+    archvieView: false,
   };
 
   switchView = () =>  {
     this.setState({view: !this.state.view})
+  }
+
+  switchArchiveView = () =>  {
+    this.setState({archiveView: !this.state.archiveView})
   }
 
   render() {
@@ -16,7 +21,13 @@ export default class AppSettingsProvider extends React.Component {
 
     return (
       <AppSettingsContext.Provider
-        value={{ state: this.state, switchView: this.switchView }}
+        value={
+          {
+            state: this.state,
+            switchView: this.switchView,
+            switchArchiveView: this.switchArchiveView,
+          }
+        }
       >
         {children}
       </AppSettingsContext.Provider>

@@ -76,7 +76,8 @@ const Button = styled(motion.button)`
 const AppNav = () => {
   const [ hover, setHover ] = useState(null);
   const appSettingsContext = useContext(AppSettingsContext);
-  const { view, switchView } = appSettingsContext;
+  const { view } = appSettingsContext.state;
+  const { switchView } = appSettingsContext;
 
   return (
     <Nav>
@@ -84,19 +85,19 @@ const AppNav = () => {
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <AddIcon />
       </Button>
-      {hover === "AddIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">New playlist</P> : null}
+      {hover === "AddIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">New playlist</P> : null}
     </Wrapper>
     <Wrapper onMouseEnter={() => setHover("ViewIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView()}>
         {view === true ? <ViewHeadlineIcon /> : <ViewWeekIcon fontSize="large" />}
       </Button>
-      {hover === "ViewIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
+      {hover === "ViewIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
     </Wrapper>
     <Wrapper onMouseEnter={() => setHover("ArchiveIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <ArchiveIcon />
       </Button>
-      {hover === "ArchiveIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
+      {hover === "ArchiveIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
     </Wrapper>
   </Nav>
   )
