@@ -52,13 +52,13 @@ const Span = styled.span`
 `;
 
 const NewPlaylistItemBar = ({
+  inputActive,
+  toggleInputActive,
   nextStep,
   playlistItemURL,
   playlistItems,
   setPlaylistItemURL,
 }) => {
-  const [inputActive, toggleInputActive] = useState(false);
-
   const formatUrl = (url) => {
     if (!url.includes('//')) {
       url = `//${url}`;

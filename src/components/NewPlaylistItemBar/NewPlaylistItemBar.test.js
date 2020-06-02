@@ -27,6 +27,8 @@ function renderNewPlaylistItemBar(props, context) {
   return { ...utils };
 }
 
+const mockToggleInputActive = jest.fn();
+
 test('it renders a counter and button', () => {
   const { getByRole, getByText } = renderNewPlaylistItemBar({});
   const counter = getByText('0');
@@ -45,32 +47,19 @@ test('it renders a counter showing length of items array in props', () => {
 });
 
 test('button text changes depending on input state and input can be toggled', async () => {
-  const {
-    getByPlaceholderText,
-    getByText,
-    queryByText,
-  } = renderNewPlaylistItemBar({
+  const { queryByText } = renderNewPlaylistItemBar({
+    inputActive: false,
+    toggleInputActive: mockToggleInputActive,
     nextStep: jest.fn(),
     playlistItemURL: 'mockURL',
     playlistItems: [],
     setPlaylistItemURL: jest.fn(),
   });
   const button = queryByText('+ new item');
-  let input;
 
   expect(button).toBeInTheDocument();
   fireEvent.click(button);
 
-  await waitFor(() => {
-    expect(getByText('- close')).toBeInTheDocument();
-    input = getByPlaceholderText('now, add an item URL:');
-    expect(input).toBeInTheDocument();
-  });
-
-  fireEvent.click(button);
-
-  await waitFor(() => {
-    expect(getByText('+ new item')).toBeInTheDocument();
-    expect(input).not.toBeInTheDocument();
-  });
+  expect(mockToggleInputActive).toHaveBeenCalledTimes(1);
+  expect(mockToggleInputActive).toHaveBeenCalledWith(true);
 });
