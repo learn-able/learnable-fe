@@ -20,22 +20,21 @@ export const useFetch = () => {
           signal: httpAbortCtrl.signal,
         });
 
+        if (!response.ok) {
+          throw new Error(response.message);
+        }
+
         const responseData = await response.json();
 
         activeHttpRequests.current = activeHttpRequests.current.filter(
           (reqCtrl) => reqCtrl !== httpAbortCtrl
         );
 
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        }
-
         setIsLoading(false);
         return responseData;
       } catch (err) {
         setError(err.message);
         setIsLoading(false);
-        throw err;
       }
     },
     []
@@ -53,5 +52,5 @@ export const useFetch = () => {
     []
   );
 
-  return { isLoading, error, sendRequest, clearError };
+  return { isLoading, error, sendRequest, clearError, setError, setIsLoading };
 };
