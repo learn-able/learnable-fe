@@ -27,8 +27,28 @@ function renderNewPlaylistItemBar(props, context) {
   return { ...utils };
 }
 
+const mockToggleInputActive = jest.fn();
+
+const mockPropsNoItems = {
+  inputActive: false,
+  nextStep: jest.fn(),
+  playlistItems: [],
+  playlistItemURL: 'mockURL',
+  setPlaylistItemURL: jest.fn(),
+  toggleInputActive: mockToggleInputActive,
+};
+
+const mockProps = {
+  inputActive: false,
+  nextStep: jest.fn(),
+  playlistItems: [{}, {}, {}],
+  playlistItemURL: 'mockURL',
+  setPlaylistItemURL: jest.fn(),
+  toggleInputActive: mockToggleInputActive,
+};
+
 test('it renders a counter and button', () => {
-  const { getByRole, getByText } = renderNewPlaylistItemBar({});
+  const { getByRole, getByText } = renderNewPlaylistItemBar(mockPropsNoItems);
   const counter = getByText('0');
   const button = getByRole('button');
 
@@ -37,40 +57,18 @@ test('it renders a counter and button', () => {
 });
 
 test('it renders a counter showing length of items array in props', () => {
-  const { getByText } = renderNewPlaylistItemBar({
-    playlistItems: [{}, {}, {}],
-  });
+  const { getByText } = renderNewPlaylistItemBar(mockProps);
   const counter = getByText('3');
   expect(counter).toBeInTheDocument();
 });
 
 test('button text changes depending on input state and input can be toggled', async () => {
-  const {
-    getByPlaceholderText,
-    getByText,
-    queryByText,
-  } = renderNewPlaylistItemBar({
-    nextStep: jest.fn(),
-    playlistItemURL: 'mockURL',
-    playlistItems: [],
-    setPlaylistItemURL: jest.fn(),
-  });
+  const { queryByText } = renderNewPlaylistItemBar(mockPropsNoItems);
   const button = queryByText('+ new item');
-  let input;
 
   expect(button).toBeInTheDocument();
   fireEvent.click(button);
 
-  await waitFor(() => {
-    expect(getByText('- close')).toBeInTheDocument();
-    input = getByPlaceholderText('now, add an item URL:');
-    expect(input).toBeInTheDocument();
-  });
-
-  fireEvent.click(button);
-
-  await waitFor(() => {
-    expect(getByText('+ new item')).toBeInTheDocument();
-    expect(input).not.toBeInTheDocument();
-  });
+  expect(mockToggleInputActive).toHaveBeenCalledTimes(1);
+  expect(mockToggleInputActive).toHaveBeenCalledWith(true);
 });

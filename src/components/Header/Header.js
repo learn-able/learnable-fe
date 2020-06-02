@@ -1,15 +1,15 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const H1 = styled.h1`
   cursor: pointer;
   font-weight: 200;
-`
+`;
 
 const Div = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const Button = styled.button`
   font-size: 1rem;
@@ -22,7 +22,7 @@ const Button = styled.button`
   background: #9b59b6;
   cursor: pointer;
   margin: 0 0 0 0.5rem;
-`
+`;
 
 const Ul = styled.ul`
   display: flex;
@@ -33,7 +33,7 @@ const Ul = styled.ul`
     margin: 0.5rem;
     cursor: pointer;
   }
-`
+`;
 
 const Nav = styled.nav`
   height: 4rem;
@@ -46,23 +46,23 @@ const Nav = styled.nav`
   color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
-const Header = () => {
-  return (
-      <Nav>
-        <Link href="/"><H1>learnable</H1></Link>
-        <Div>
-        <Ul>
-          <Link href="/">
-            <li>home</li>
-          </Link>
-          <Link href="/app/notifications">
-            <li>notifications</li>
-          </Link>
-        </Ul>
-        <Button>Welcome, Ryan!</Button>
-        </Div>
-      </Nav>
-  )
-}
+const Header = () => (
+  <Nav>
+    <Link href="/">
+      <H1>learnable</H1>
+    </Link>
+    <Div>
+      <Ul>
+        <Link href="/">
+          <li>home</li>
+        </Link>
+        <Link href="/app/notifications">
+          <li>notifications</li>
+        </Link>
+      </Ul>
+      <Button>Welcome, Ryan!</Button>
+    </Div>
+  </Nav>
+);
 
 export default Header;

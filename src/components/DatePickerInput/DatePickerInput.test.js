@@ -47,7 +47,11 @@ function renderDatePickerInput(props, context) {
 const setPlaylistDate = jest.fn();
 
 test('it renders an input field and button', () => {
-  const { getByLabelText } = renderDatePickerInput({});
+  const today = getDateToday();
+  const { getByLabelText } = renderDatePickerInput({
+    playlistDate: today,
+    setPlaylistDate,
+  });
 
   const button = getByLabelText('change date');
   const input = document.querySelector('input');

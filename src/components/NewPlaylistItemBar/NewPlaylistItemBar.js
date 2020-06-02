@@ -52,13 +52,13 @@ const Span = styled.span`
 `;
 
 const NewPlaylistItemBar = ({
+  inputActive,
+  toggleInputActive,
   nextStep,
   playlistItemURL,
   playlistItems,
   setPlaylistItemURL,
 }) => {
-  const [inputActive, toggleInputActive] = useState(false);
-
   const formatUrl = (url) => {
     if (!url.includes('//')) {
       url = `//${url}`;
@@ -103,7 +103,12 @@ NewPlaylistItemBar.defaultProps = {
 };
 
 NewPlaylistItemBar.propTypes = {
+  inputActive: PropTypes.bool.isRequired,
+  nextStep: PropTypes.func.isRequired,
   playlistItems: PropTypes.arrayOf(PropTypes.object),
+  playlistItemURL: PropTypes.string,
+  setPlaylistItemURL: PropTypes.func.isRequired,
+  toggleInputActive: PropTypes.func.isRequired,
 };
 
 export default NewPlaylistItemBar;
