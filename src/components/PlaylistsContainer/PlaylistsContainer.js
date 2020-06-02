@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
@@ -29,6 +29,13 @@ const Main = styled(motion.main)`
   overflow: scroll;
   background-color: #F9F9F9;
   color: ${({ theme }) => theme.colors.fontPrimary};
+
+  ${({ view }) =>
+    !view &&
+    css`
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    `}
 `;
 
 const PlaylistsContainer = ({ view }) => {
@@ -49,6 +56,7 @@ const PlaylistsContainer = ({ view }) => {
       variants={parentVariants}
       initial="disabled"
       animate={playlists.length ? 'active' : 'disabled'}
+      view={view}
       style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
     >
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}

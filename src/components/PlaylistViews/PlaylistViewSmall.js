@@ -20,7 +20,7 @@ const childVariants = {
 const Div = styled(motion.div)`
   border: solid 1px ${({ theme }) => theme.colors.grayLight};
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
-  height: 20rem;
+  height: 15rem;
   margin: 2.5rem;
   padding: 2.5rem;
   position: relative;

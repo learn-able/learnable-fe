@@ -1,9 +1,26 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import { motion, AnimatePresence } from "framer-motion"
+import styled, { css } from 'styled-components';
+import { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ArchiveIcon from '@material-ui/icons/Archive';
+
+const variants = {
+  active: {
+    y: 1,
+    opacity: 1,
+    transition: {
+      damping: 500,
+      duration: 0.1,
+    },
+  },
+  disabled: {
+    y: -25,
+    opacity: -0.5,
+  },
+};
 
 const Nav = styled.nav`
   display: flex;
@@ -12,14 +29,20 @@ const Nav = styled.nav`
   padding: 1rem 2.5rem;
 `;
 
-const P = styled.p`
+const P = styled(motion.p)`
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  position: absolute;
+  height: 2.5rem;
+  transform-origin: top;
   color: ${({ theme }) => theme.colors.grayDark};
-  font-size: 0.85rem;
-  padding-top: 1rem;
+  font-size: 0.75rem;
+
+  ${({ view }) =>
+    !view &&
+    css`
+      position: absolute;
+    `}
 `;
 
 const Wrapper = styled.div`
@@ -41,35 +64,39 @@ const Button = styled(motion.button)`
   border-radius: 50%;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   margin: 0 1rem;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.fontPrimary};
   background: #f9f9f9;
 `;
 
-const AppNav = ({ switchView, view }) => (
-  <Nav>
-    <Wrapper>
+const AppNav = ({ switchView, view }) => {
+  const [ hover, setHover ] = useState(null);
+
+  return (
+    <Nav>
+    <Wrapper onMouseEnter={() => setHover("AddIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <AddIcon fontSize="large" />
+        <AddIcon />
       </Button>
-      <P>Add new playlist</P>
+      {hover === "AddIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Add new playlist</P> : null}
     </Wrapper>
-    <Wrapper>
+    <Wrapper onMouseEnter={() => setHover("ViewIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView(!view)}>
-        <ViewHeadlineIcon fontSize="large" />
+        {view === true ? <ViewHeadlineIcon /> : <ViewWeekIcon fontSize="large" />}
       </Button>
-      <P>Toggle views</P>
+      {hover === "ViewIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
     </Wrapper>
-    <Wrapper>
+    <Wrapper onMouseEnter={() => setHover("ArchiveIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <ArchiveIcon fontSize="large" />
+        <ArchiveIcon />
       </Button>
-      <P>Show archived</P>
+      {hover === "ArchiveIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
     </Wrapper>
   </Nav>
-);
+  )
+};
 
 export default AppNav;
