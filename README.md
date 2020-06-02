@@ -14,6 +14,8 @@ Contributors:
 5. [Testing](#5-testing)
 6. [Deployment](#6-deployment)
 
+![main](https://user-images.githubusercontent.com/44818815/83580573-a1684a80-a4f9-11ea-8bd7-328c0c2adcb5.gif)
+
 ### 1. Abstract
 
 As a software developer, there is always more to learn, and many of us find ourselves with folders full of interesting articles, videos, and podcasts that we'd love to learn from yet somehow never get to. Managing tabs and windows is obnoxious and bookmarks never get maintained. Learnable helps you trim the fat and finish what you started.
