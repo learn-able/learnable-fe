@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -16,7 +17,7 @@ const Div = styled.div`
 const options = ['Archive', 'Delete'];
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu({ playlistId }) {
+export default function Dropdown({ playlistId }) {
   const playlistContext = useContext(PlaylistContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -71,3 +72,7 @@ export default function LongMenu({ playlistId }) {
     </Div>
   );
 }
+
+Dropdown.propTypes = {
+  playlistId: PropTypes.number.isRequired,
+};

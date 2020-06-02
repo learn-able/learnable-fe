@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Notification from '../Notification/Notification'
+import styled from 'styled-components';
+import Notification from '../Notification/Notification';
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   height: 45rem;
   overflow: scroll;
   margin: 2rem 0;
-`
+`;
 
 const NotificationsContainer = () => (
   <Wrapper>
@@ -25,6 +25,6 @@ const NotificationsContainer = () => (
     <Notification />
     <Notification />
   </Wrapper>
-)
+);
 
-export default NotificationsContainer
+export default NotificationsContainer;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import React from 'react';
 
@@ -21,6 +22,11 @@ const DatePickerInput = ({ playlistDate, setPlaylistDate }) => {
       }}
     />
   );
+};
+
+DatePickerInput.propTypes = {
+  playlistDate: PropTypes.string.isRequired,
+  setPlaylistDate: PropTypes.func.isRequired,
 };
 
 export default DatePickerInput;
