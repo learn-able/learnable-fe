@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
+import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
@@ -38,7 +39,9 @@ const Main = styled(motion.main)`
     `}
 `;
 
-const PlaylistsContainer = ({ view }) => {
+const PlaylistsContainer = () => {
+  const appSettingsContext = useContext(AppSettingsContext);
+  const { view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
 
@@ -59,6 +62,7 @@ const PlaylistsContainer = ({ view }) => {
       view={view}
       style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
     >
+    {console.log(view)}
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
       {view === true ? <AddPlaylist /> : null}
     </Main>

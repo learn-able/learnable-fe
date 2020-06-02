@@ -14,8 +14,7 @@ const MainWrapper = styled.div`
 `;
 
 export default function Home() {
-  const [view, switchView] = useState(true);
-    const appSettingsContext = useContext(AppSettingsContext);
+  const appSettingsContext = useContext(AppSettingsContext);
 
   return (
     <>
@@ -23,11 +22,10 @@ export default function Home() {
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>
-      {console.log(appSettingsContext)}
       <Header />
         <MainWrapper>
-          <AppNav view={view} switchView={switchView} />
-          <PlaylistsContainer view={view} />
+          <AppNav />
+          <PlaylistsContainer />
         </MainWrapper>
       </PlaylistProvider>
     </>

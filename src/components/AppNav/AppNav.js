@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
 import styled, { css } from 'styled-components';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import AddIcon from '@material-ui/icons/Add';
 import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
 import ViewWeekIcon from '@material-ui/icons/ViewWeek';
@@ -72,8 +73,10 @@ const Button = styled(motion.button)`
   background: #f9f9f9;
 `;
 
-const AppNav = ({ switchView, view }) => {
+const AppNav = () => {
   const [ hover, setHover ] = useState(null);
+  const appSettingsContext = useContext(AppSettingsContext);
+  const { view, switchView } = appSettingsContext;
 
   return (
     <Nav>
@@ -81,19 +84,19 @@ const AppNav = ({ switchView, view }) => {
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <AddIcon />
       </Button>
-      {hover === "AddIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Add new playlist</P> : null}
+      {hover === "AddIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">New playlist</P> : null}
     </Wrapper>
     <Wrapper onMouseEnter={() => setHover("ViewIcon")}>
-      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView(!view)}>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView()}>
         {view === true ? <ViewHeadlineIcon /> : <ViewWeekIcon fontSize="large" />}
       </Button>
-      {hover === "ViewIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
+      {hover === "ViewIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
     </Wrapper>
     <Wrapper onMouseEnter={() => setHover("ArchiveIcon")}>
       <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <ArchiveIcon />
       </Button>
-      {hover === "ArchiveIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
+      {hover === "ArchiveIcon" ? <P view={!view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
     </Wrapper>
   </Nav>
   )
