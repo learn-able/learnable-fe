@@ -13,9 +13,10 @@ const Div = styled.div`
 
 const Button = styled.button`
   font-size: 1rem;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
   height: 2rem;
   border: none;
+  min-width: 10rem;
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   color: white;

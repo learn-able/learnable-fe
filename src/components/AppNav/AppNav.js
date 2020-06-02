@@ -1,9 +1,54 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import { motion, AnimatePresence } from "framer-motion"
+import styled, { css } from 'styled-components';
+import { useState, useContext } from 'react';
+import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import AddIcon from '@material-ui/icons/Add';
 import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ArchiveIcon from '@material-ui/icons/Archive';
+
+const AppNav = () => {
+  const [ hover, setHover ] = useState(null);
+  const appSettingsContext = useContext(AppSettingsContext);
+  const { view } = appSettingsContext.state;
+  const { switchView } = appSettingsContext;
+
+  return (
+    <Nav>
+    <Wrapper onMouseEnter={() => setHover("AddIcon")}>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+        <AddIcon />
+      </Button>
+      {hover === "AddIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">New playlist</P> : null}
+    </Wrapper>
+    <Wrapper onMouseEnter={() => setHover("ViewIcon")}>
+      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => switchView()}>
+        {view === true ? <ViewHeadlineIcon /> : <ViewWeekIcon fontSize="large" />}
+      </Button>
+      {hover === "ViewIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
+    </Wrapper>
+    <Wrapper onMouseEnter={() => setHover("ArchiveIcon")}>
+      <Button onClick={() => appSettingsContext.switchArchiveView()} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+        <ArchiveIcon />
+      </Button>
+      {hover === "ArchiveIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}
+    </Wrapper>
+  </Nav>
+  )
+};
+
+const Button = styled(motion.button)`
+  border-radius: 50%;
+  border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
+  width: 3rem;
+  height: 3rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.fontPrimary};
+  background: #f9f9f9;
+`;
 
 const Nav = styled.nav`
   display: flex;
@@ -12,14 +57,20 @@ const Nav = styled.nav`
   padding: 1rem 2.5rem;
 `;
 
-const P = styled.p`
+const P = styled(motion.p)`
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  position: absolute;
+  height: 2.5rem;
+  transform-origin: top;
   color: ${({ theme }) => theme.colors.grayDark};
-  font-size: 0.85rem;
-  padding-top: 1rem;
+  font-size: 0.75rem;
+
+  ${({ view }) =>
+    !view &&
+    css`
+      position: absolute;
+    `}
 `;
 
 const Wrapper = styled.div`
@@ -37,44 +88,19 @@ const Wrapper = styled.div`
   }
 `;
 
-const Button = styled(motion.button)`
-  border-radius: 50%;
-  border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
-  box-shadow: ${({ theme }) => theme.styles.boxShadow};
-  width: 3.5rem;
-  height: 3.5rem;
-  margin: 0 1rem;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.fontPrimary};
-  background: #f9f9f9;
-`;
-
-const buttons = [
-  {
-    label: <AddIcon fontSize="large" />,
-    title: 'Add new playlist',
+const variants = {
+  active: {
+    y: 1,
+    opacity: 1,
+    transition: {
+      damping: 500,
+      duration: 0.1,
+    },
   },
-  {
-    label: <ViewHeadlineIcon fontSize="large" />,
-    title: 'Toggle views',
+  disabled: {
+    y: -25,
+    opacity: -0.5,
   },
-  {
-    label: <ArchiveIcon fontSize="large" />,
-    title: 'Show archived',
-  },
-];
-
-const AppNav = () => (
-  <Nav>
-    {buttons.map((b) => (
-      <Wrapper key={b.title}>
-        <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          {b.label}
-        </Button>
-        <P>{b.title}</P>
-      </Wrapper>
-    ))}
-  </Nav>
-);
+};
 
 export default AppNav;

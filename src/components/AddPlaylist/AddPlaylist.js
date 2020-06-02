@@ -3,36 +3,6 @@ import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const Wrapper = styled.div`
-  padding: 0 1rem;
-`
-
-const Button = styled(motion.button)`
-  background: transparent;
-  border: 1px dashed ${({ theme }) => theme.colors.grayDark};
-  border-radius: ${({ theme }) => theme.styles.borderRadius};
-  font-size: ${({ theme }) => theme.fontSizes.md};
-  height: 10rem;
-  margin: 2.5rem;
-  width: 25rem;
-  min-width: 25rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      border: 1px dashed ${({ theme }) => theme.colors.grayLight};
-      color: ${({ theme }) => theme.colors.grayLight};
-
-      &:hover {
-        cursor: auto;
-      }
-    `}
-`;
-
 const AddPlaylist = () => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
@@ -67,5 +37,35 @@ const AddPlaylist = () => {
     </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  padding: 0 1rem;
+`
+
+const Button = styled(motion.button)`
+  background: transparent;
+  border: 1px dashed ${({ theme }) => theme.colors.grayDark};
+  border-radius: ${({ theme }) => theme.styles.borderRadius};
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  height: 10rem;
+  margin: 2.5rem;
+  min-width: 25rem;
+  width: 25rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      border: 1px dashed ${({ theme }) => theme.colors.grayLight};
+      color: ${({ theme }) => theme.colors.grayLight};
+
+      &:hover {
+        cursor: auto;
+      }
+    `}
+`;
 
 export default AddPlaylist;

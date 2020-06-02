@@ -1,22 +1,45 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
+import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
+import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
 
-const parentVariants = {
-  active: {
-    transition: {
-      delay: 1,
-      staggerChildren: 0.2,
-    },
-  },
-  disabled: {
-    transition: {
-      delay: 1,
-    },
-  },
+const PlaylistsContainer = () => {
+  const appSettingsContext = useContext(AppSettingsContext);
+  const { view } = appSettingsContext.state;
+  const playlistContext = useContext(PlaylistContext);
+  const { playlists } = playlistContext.state;
+
+  const filteredPlaylists = () => {
+    return appSettingsContext.state.archiveView
+    ? playlists.filter(p => p.status === 'archived')
+    : playlists.filter(p => p.status !== 'archived')
+  }
+
+  const renderedPlaylists = filteredPlaylists().map((playlist) => (
+    <Playlist key={playlist.id} {...playlist} />
+  ));
+
+  const renderedPlaylistsSmall = filteredPlaylists().map((playlist) => (
+    <PlaylistViewSmall key={playlist.id} {...playlist} />
+  ));
+
+
+  return (
+    <Main
+      variants={parentVariants}
+      initial="disabled"
+      animate={playlists.length ? 'active' : 'disabled'}
+      view={view}
+      style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
+    >
+      {view === true ? renderedPlaylists : renderedPlaylistsSmall}
+      {view === true ? <AddPlaylist /> : null}
+    </Main>
+  );
 };
 
 const Main = styled(motion.main)`
@@ -28,25 +51,27 @@ const Main = styled(motion.main)`
   overflow: scroll;
   background-color: #F9F9F9;
   color: ${({ theme }) => theme.colors.fontPrimary};
+
+  ${({ view }) =>
+    !view &&
+    css`
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    `}
 `;
 
-const PlaylistsContainer = () => {
-  const playlistContext = useContext(PlaylistContext);
-  const { playlists } = playlistContext.state;
-  const renderedPlaylists = playlists.map((playlist) => (
-    <Playlist key={playlist.id} {...playlist} />
-  ));
-
-  return (
-    <Main
-      variants={parentVariants}
-      initial="disabled"
-      animate={playlists.length ? 'active' : 'disabled'}
-    >
-      {renderedPlaylists}
-      <AddPlaylist />
-    </Main>
-  );
+const parentVariants = {
+  active: {
+    transition: {
+      delay: 1,
+      staggerChildren: 0.05,
+    },
+  },
+  disabled: {
+    transition: {
+      delay: 1,
+    },
+  },
 };
 
 export default PlaylistsContainer;
