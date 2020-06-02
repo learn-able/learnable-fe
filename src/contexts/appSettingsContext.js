@@ -5,7 +5,7 @@ export const AppSettingsContext = createContext();
 export default class AppSettingsProvider extends React.Component {
   state = {
     view: true,
-    archvieView: false,
+    archiveView: false,
   };
 
   switchView = () =>  {

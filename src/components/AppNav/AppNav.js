@@ -94,7 +94,7 @@ const AppNav = () => {
       {hover === "ViewIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Toggle views</P> : null}
     </Wrapper>
     <Wrapper onMouseEnter={() => setHover("ArchiveIcon")}>
-      <Button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+      <Button onClick={() => appSettingsContext.switchArchiveView()} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <ArchiveIcon />
       </Button>
       {hover === "ArchiveIcon" ? <P view={view} variants={variants} initial="disabled" animate="active">Show archived</P> : null}

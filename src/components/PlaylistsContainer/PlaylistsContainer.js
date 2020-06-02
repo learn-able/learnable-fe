@@ -45,11 +45,17 @@ const PlaylistsContainer = () => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
 
-  const renderedPlaylists = playlists.map((playlist) => (
+  const filteredPlaylists = () => {
+    return appSettingsContext.state.archiveView
+    ? playlists.filter(p => p.status === 'archived')
+    : playlists.filter(p => p.status !== 'archived')
+  }
+
+  const renderedPlaylists = filteredPlaylists().map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
   ));
 
-  const renderedPlaylistsSmall = playlists.map((playlist) => (
+  const renderedPlaylistsSmall = filteredPlaylists().map((playlist) => (
     <PlaylistViewSmall key={playlist.id} {...playlist} />
   ));
 
@@ -62,7 +68,6 @@ const PlaylistsContainer = () => {
       view={view}
       style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
     >
-    {console.log(view)}
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
       {view === true ? <AddPlaylist /> : null}
     </Main>

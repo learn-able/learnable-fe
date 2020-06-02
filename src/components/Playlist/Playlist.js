@@ -36,7 +36,7 @@ const Section = styled(motion.section)`
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
 `;
 
-const Playlist = ({ id, due_date, playlist_items, title }) => {
+const Playlist = ({ id, due_date, playlist_items, status, title }) => {
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
