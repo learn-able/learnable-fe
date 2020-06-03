@@ -12,8 +12,8 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 const AppNav = () => {
   const [hover, setHover] = useState(null);
   const appSettingsContext = useContext(AppSettingsContext);
-  const { view } = appSettingsContext.state;
-  const { switchView } = appSettingsContext;
+  const { archiveView, view } = appSettingsContext.state;
+  const { switchArchiveView, switchView } = appSettingsContext;
 
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
@@ -38,11 +38,19 @@ const AppNav = () => {
     playlistContext.cancelAdd();
   };
 
+  const handleSwitchView = (callback) => {
+    if (cancel) {
+      handleCancel();
+    }
+
+    callback();
+  };
+
   return (
     <Nav>
       <Wrapper onMouseEnter={() => setHover('AddIcon')}>
         <Button
-          disabled={!view}
+          disabled={!view || archiveView}
           onClick={cancel ? () => handleCancel() : () => handleAdd()}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -64,7 +72,7 @@ const AppNav = () => {
         <Button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => switchView()}
+          onClick={() => handleSwitchView(switchView)}
         >
           {view === true ? (
             <ViewHeadlineIcon />
@@ -85,7 +93,7 @@ const AppNav = () => {
       </Wrapper>
       <Wrapper onMouseEnter={() => setHover('ArchiveIcon')}>
         <Button
-          onClick={() => appSettingsContext.switchArchiveView()}
+          onClick={() => handleSwitchView(switchArchiveView)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
