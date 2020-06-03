@@ -40,7 +40,7 @@ const AddPlaylist = () => {
 
 const Wrapper = styled.div`
   padding: 0 1rem;
-`
+`;
 
 const Button = styled(motion.button)`
   background: transparent;

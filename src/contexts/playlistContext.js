@@ -143,11 +143,18 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
+  const cancelAdd = () => {
+    setState({
+      playlists: state.playlists.slice(0, -1),
+    });
+  };
+
   return (
     <PlaylistContext.Provider
       value={{
         state,
         addPlaylist,
+        cancelAdd,
         deletePlaylist,
         patchPlaylist,
         patchPlaylistItem,
