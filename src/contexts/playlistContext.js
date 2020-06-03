@@ -145,7 +145,7 @@ const PlaylistProvider = ({ children }) => {
 
   const cancelAdd = () => {
     setState({
-      playlists: state.playlists.slice(0, -1),
+      playlists: state.playlists.filter((p) => p.id),
     });
   };
 

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
@@ -9,15 +9,14 @@ import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
 
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
-  const { view } = appSettingsContext.state;
+  const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
 
-  const filteredPlaylists = () => {
-    return appSettingsContext.state.archiveView
-    ? playlists.filter(p => p.status === 'archived')
-    : playlists.filter(p => p.status !== 'archived')
-  }
+  const filteredPlaylists = () =>
+    appSettingsContext.state.archiveView
+      ? playlists.filter((p) => p.status === 'archived')
+      : playlists.filter((p) => p.status !== 'archived');
 
   const renderedPlaylists = filteredPlaylists().map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
@@ -27,17 +26,18 @@ const PlaylistsContainer = () => {
     <PlaylistViewSmall key={playlist.id} {...playlist} />
   ));
 
-
   return (
     <Main
       variants={parentVariants}
       initial="disabled"
       animate={playlists.length ? 'active' : 'disabled'}
       view={view}
-      style={view === true ? null : {flexWrap: "wrap", justifyContent: "center",}}
+      style={
+        view === true ? null : { flexWrap: 'wrap', justifyContent: 'center' }
+      }
     >
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
-      {view === true ? <AddPlaylist /> : null}
+      {view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
   );
 };
@@ -49,7 +49,7 @@ const Main = styled(motion.main)`
   flex-grow: 1;
   width: 100vw;
   overflow: scroll;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   color: ${({ theme }) => theme.colors.fontPrimary};
 
   ${({ view }) =>
