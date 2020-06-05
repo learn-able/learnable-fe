@@ -144,9 +144,8 @@ const ArchiveButton = styled(motion.button)`
   ${({ view }) =>
     view &&
     css`
-      /* background: ${({ theme }) => theme.colors.fontPrimary};
-      color: #f9f9f9; */
-      box-shadow: inset 0px 0px 10px rgba(0,0,0,0.25);
+      border: 0.5px solid ${({ theme }) => theme.colors.grayLight};
+      box-shadow: inset 0px 0px 15px rgba(0,0,0,0.25);
     `}
 `;
 
@@ -207,12 +206,6 @@ const Wrapper = styled.div`
 
   p {
     display: none;
-  }
-
-  &:hover {
-    & > * {
-      /* display: block; */
-    }
   }
 `;
 
