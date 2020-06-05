@@ -46,11 +46,13 @@ const NoItemsButton = styled.button.attrs({
 
 const PlaylistView2 = ({
   dueDate,
+  isFavorite,
   nextStep,
   playlistId,
   playlistItems,
   playlistItemURL,
   setPlaylistItemURL,
+  status,
   title,
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
@@ -64,7 +66,12 @@ const PlaylistView2 = ({
 
   return (
     <>
-      <Dropdown playlistId={playlistId} />
+      <Dropdown
+        dueDate={dueDate}
+        isFavorite={isFavorite}
+        playlistId={playlistId}
+        title={title}
+      />
       <PlaylistTitle title={title} playlistItems={playlistItems} />
       <DueDate dueDate={dueDate} />
       <ProgressBar playlistItems={playlistItems} />

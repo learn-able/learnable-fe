@@ -49,6 +49,7 @@ const DoneButton = styled.button.attrs(() => ({
   type: 'button',
 }))`
   background: #3498db;
+  border: none;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: 500;
@@ -92,7 +93,11 @@ const PlaylistView3 = ({
     />
     <Grid>
       {buttons.map((btn) => (
-        <Button key={btn.label} onClick={() => setCategory(btn.label)}>
+        <Button
+          aria-label={btn.label}
+          key={btn.label}
+          onClick={() => setCategory(btn.label)}
+        >
           {btn.icon}
           {btn.label}
         </Button>

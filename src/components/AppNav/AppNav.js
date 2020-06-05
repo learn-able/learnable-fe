@@ -50,6 +50,7 @@ const AppNav = () => {
     <Nav>
       <Wrapper onMouseEnter={() => setHover('AddIcon')}>
         <Button
+          aria-label="add new playlist"
           disabled={!view || archiveView}
           onClick={cancel ? () => handleCancel() : () => handleAdd()}
           whileHover={{ scale: 1.1 }}
@@ -70,6 +71,7 @@ const AppNav = () => {
       </Wrapper>
       <Wrapper onMouseEnter={() => setHover('ViewIcon')}>
         <Button
+          aria-label="card view"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleSwitchView(switchView)}
@@ -82,6 +84,7 @@ const AppNav = () => {
         </Button>
         {hover === 'ViewIcon' ? (
           <P
+            id="view-text"
             view={view}
             variants={variants}
             initial="disabled"
@@ -93,6 +96,7 @@ const AppNav = () => {
       </Wrapper>
       <Wrapper onMouseEnter={() => setHover('ArchiveIcon')}>
         <Button
+          aria-label="archive view"
           onClick={() => handleSwitchView(switchArchiveView)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -101,6 +105,7 @@ const AppNav = () => {
         </Button>
         {hover === 'ArchiveIcon' ? (
           <P
+            id="archive-text"
             view={view}
             variants={variants}
             initial="disabled"

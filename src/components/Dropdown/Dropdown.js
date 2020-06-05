@@ -5,13 +5,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Router from 'next/router';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import Router from 'next/router'
 
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
-export default function Dropdown({ playlistId }) {
+export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
   const playlistContext = useContext(PlaylistContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -22,14 +22,22 @@ export default function Dropdown({ playlistId }) {
 
   const handleClose = (option) => {
     if (option === 'Archive') {
-      playlistContext.patchPlaylist(playlistId, { status: 'archived' });
+      playlistContext.patchPlaylist(playlistId, {
+        due_date: dueDate,
+        is_favorite: isFavorite,
+        status: 'archived',
+        title,
+      });
     }
+
     if (option === 'Delete') {
       playlistContext.deletePlaylist(playlistId);
     }
+
     if (option === 'Go to page') {
-      Router.push(`/app/playlist/${playlistId}`)
+      Router.push(`/app/playlist/${playlistId}`);
     }
+
     setAnchorEl(null);
   };
 
@@ -57,10 +65,7 @@ export default function Dropdown({ playlistId }) {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            onClick={() => handleClose(option)}
-          >
+          <MenuItem key={option} onClick={() => handleClose(option)}>
             {option}
           </MenuItem>
         ))}
@@ -77,5 +82,8 @@ const Div = styled.div`
 `;
 
 Dropdown.propTypes = {
+  dueDate: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool,
   playlistId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
 };

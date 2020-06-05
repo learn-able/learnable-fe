@@ -8,7 +8,14 @@ import PlaylistView1 from '../PlaylistViews/PlaylistView1';
 import PlaylistView2 from '../PlaylistViews/PlaylistView2';
 import PlaylistView3 from '../PlaylistViews/PlaylistView3';
 
-const Playlist = ({ id, due_date, playlist_items, status, title }) => {
+const Playlist = ({
+  id,
+  due_date,
+  is_favorite: isFavorite,
+  playlist_items,
+  status,
+  title,
+}) => {
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
@@ -64,11 +71,13 @@ const Playlist = ({ id, due_date, playlist_items, status, title }) => {
         return (
           <PlaylistView2
             dueDate={playlistDate}
+            isFavorite={isFavorite}
             nextStep={nextStep}
             playlistId={id}
             playlistItemURL={playlistItemURL}
             playlistItems={playlist_items}
             setPlaylistItemURL={setPlaylistItemURL}
+            status={status}
             title={playlistTitle}
           />
         );
@@ -91,11 +100,13 @@ const Playlist = ({ id, due_date, playlist_items, status, title }) => {
         return (
           <PlaylistView2
             dueDate={playlistDate}
+            isFavorite={isFavorite}
             nextStep={nextStep}
             playlistId={id}
             playlistItemURL={playlistItemURL}
             playlistItems={playlist_items}
             setPlaylistItemURL={setPlaylistItemURL}
+            status={status}
             title={playlistTitle}
           />
         );
