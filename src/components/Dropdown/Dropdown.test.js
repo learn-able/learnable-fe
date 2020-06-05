@@ -33,7 +33,13 @@ function renderDropdown(props, context) {
   return { ...utils };
 }
 
-const mockProps = { playlistId: 1 };
+const mockProps = {
+  playlistId: 1,
+  isFavorite: false,
+  status: 'valid',
+  dueDate: '12/31/2020',
+  title: 'mock title',
+};
 const mockPatchPlaylist = jest.fn();
 const mockDeletePlaylist = jest.fn();
 
@@ -71,7 +77,12 @@ test('it invokes archive when archive menuitem clicked', async () => {
   fireEvent.click(archiveMenuItem);
 
   expect(mockPatchPlaylist).toHaveBeenCalledTimes(1);
-  expect(mockPatchPlaylist).toHaveBeenCalledWith(1, { status: 'archived' });
+  expect(mockPatchPlaylist).toHaveBeenCalledWith(1, {
+    status: 'archived',
+    due_date: '12/31/2020',
+    is_favorite: false,
+    title: 'mock title',
+  });
 });
 
 test('it invokes delete when delete menuitem clicked', async () => {
