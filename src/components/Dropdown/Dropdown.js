@@ -5,8 +5,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Router from 'next/router';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import Router from 'next/router'
 
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
@@ -28,7 +28,7 @@ export default function Dropdown({ playlistId }) {
       playlistContext.deletePlaylist(playlistId);
     }
     if (option === 'Go to page') {
-      Router.push(`/app/playlist/${playlistId}`)
+      Router.push(`/app/playlist/${playlistId}`);
     }
     setAnchorEl(null);
   };
@@ -57,10 +57,7 @@ export default function Dropdown({ playlistId }) {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            onClick={() => handleClose(option)}
-          >
+          <MenuItem key={option} onClick={() => handleClose(option)}>
             {option}
           </MenuItem>
         ))}

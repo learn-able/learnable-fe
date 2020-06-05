@@ -9,6 +9,7 @@ const Button = styled.button.attrs(() => ({
   type: 'button',
 }))`
   background: #3498db;
+  border: none;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};

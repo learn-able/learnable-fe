@@ -63,6 +63,7 @@ const PlaylistItem = ({
   return (
     <A href={url} whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
       <Checkbox
+        inputProps={{ 'aria-label': 'toggle item complete' }}
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
         name="checkbox"
