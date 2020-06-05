@@ -49,7 +49,7 @@ const Button = styled(motion.button)`
   color: ${({ theme }) => theme.colors.fontPrimary};
   font-size: ${({ theme }) => theme.fontSizes.md};
   height: 10rem;
-  margin: 2.5rem;
+  margin: 2.5rem 2.5rem 2.5rem 0;
   min-width: 25rem;
   width: 25rem;
 

@@ -48,6 +48,8 @@ const AppNav = () => {
 
   return (
     <Nav>
+      {<H2>{!appSettingsContext.state.archiveView ? 'CURRENT' : 'ARCHIVED'}</H2>}
+      <Div>
       <Wrapper onMouseEnter={() => setHover('AddIcon')}>
         <Button
           aria-label="add new playlist"
@@ -95,14 +97,15 @@ const AppNav = () => {
         ) : null}
       </Wrapper>
       <Wrapper onMouseEnter={() => setHover('ArchiveIcon')}>
-        <Button
+        <ArchiveButton
           aria-label="archive view"
           onClick={() => handleSwitchView(switchArchiveView)}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          // whileTap={{ scale: 0.95 }}
+          view={appSettingsContext.state.archiveView}
         >
           <ArchiveIcon />
-        </Button>
+        </ArchiveButton>
         {hover === 'ArchiveIcon' ? (
           <P
             id="archive-text"
@@ -115,9 +118,37 @@ const AppNav = () => {
           </P>
         ) : null}
       </Wrapper>
+      </Div>
     </Nav>
   );
 };
+
+const H2 = styled.h2`
+  font-weight: 400;
+  font-size: 1rem;
+  padding-left: 1rem;
+  align-self: flex-end;
+`
+
+const ArchiveButton = styled(motion.button)`
+  border-radius: 50%;
+  border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
+  width: 3rem;
+  height: 3rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.fontPrimary};
+  background: #f9f9f9;
+
+  ${({ view }) =>
+    view &&
+    css`
+      /* background: ${({ theme }) => theme.colors.fontPrimary};
+      color: #f9f9f9; */
+      box-shadow: inset 0px 0px 10px rgba(0,0,0,0.25);
+    `}
+`;
 
 const Button = styled(motion.button)`
   border-radius: 50%;
@@ -142,9 +173,14 @@ const Button = styled(motion.button)`
     `}
 `;
 
+const Div = styled.div`
+  display: flex;
+`
+
 const Nav = styled.nav`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   background-color: #f9f9f9;
   padding: 1rem 2.5rem;
 `;
@@ -175,7 +211,7 @@ const Wrapper = styled.div`
 
   &:hover {
     & > * {
-      display: block;
+      /* display: block; */
     }
   }
 `;
