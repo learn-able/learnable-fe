@@ -1,7 +1,6 @@
-# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe)
+# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe) ![Size](https://github-size-badge.herokuapp.com/learn-able/learnable-fe.svg)
 
 Contributors:
-[Elom Amouzou](https://github.com/eamouzou),
 [Steve Anderson](https://github.com/alerrian),
 [Ryan Bahan](https://github.com/ryanbahan),
 [Chris Postma](https://github.com/cjrpostma),
